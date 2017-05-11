@@ -9,6 +9,7 @@ Opret filen i src/main/resources
 Ændrer development.url=jdbc:mysql://HOST:3306/DB til: \
 "development.url=jdbc:mysql://127.0.0.1:3306/<navnet på din database>"
 
-
+###Setup Maven Framework
+Right Click Project -> Add Framework Support -> Maven
 
 http://javalite.io/database_migrations
