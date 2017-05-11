@@ -1,0 +1,6 @@
+//This file needs to be renamed database.properties
+
+development.driver=com.mysql.jdbc.Driver
+development.username=USERNAME
+development.password=PASSWORD
+development.url=jdbc:mysql://HOST:3306/DB
