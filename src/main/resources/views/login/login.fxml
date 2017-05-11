@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #2e569f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" style="-fx-background-color: #2e569f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
     <children>
         <AnchorPane minHeight="35.0" style="-fx-background-color: #2e569f;" />
     </children>
@@ -36,7 +36,7 @@
                     <font>
                         <Font name="Helvetica" size="16.0" />
                     </font></JFXPasswordField>
-                <JFXButton fx:id="submit" alignment="CENTER" defaultButton="true" layoutX="102.0" layoutY="305.0" onAction="#Submit" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #448AFF; -fx-background-radius: 0;" text="Login" textFill="WHITE">
+                <JFXButton fx:id="submit" alignment="CENTER" defaultButton="true" layoutX="102.0" layoutY="305.0" prefHeight="44.0" prefWidth="237.0" style="-fx-background-color: #448AFF; -fx-background-radius: 0;" text="Login" textFill="WHITE">
                     <font>
                         <Font name="Helvetica Bold" size="14.0" />
                     </font>
@@ -54,11 +54,6 @@
                         <Font name="Helvetica Bold" size="30.0" />
                     </font>
                 </Text>
-                <ImageView fitHeight="74.0" fitWidth="83.0" layoutX="41.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../icons/Lock-100.png" />
-                    </image>
-                </ImageView>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITESMOKE" height="77.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="440.0" />
                 <Text fill="#757575" layoutX="107.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?">
                     <font>
