@@ -1,2 +1,2 @@
 # badminton_app
-School project second semester
+###School project second semester
