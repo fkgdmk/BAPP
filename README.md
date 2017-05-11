@@ -12,4 +12,7 @@ Opret filen i src/main/resources
 ###Setup Maven Framework
 Right Click Project -> Add Framework Support -> Maven
 
+###Project Settings
+Right Click src/main/java -> Mark Directory as -> Source Root
+
 http://javalite.io/database_migrations
