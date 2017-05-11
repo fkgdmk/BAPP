@@ -1,4 +1,3 @@
-package main.java;
 
 import controllers.*;
 import javafx.application.Application;
