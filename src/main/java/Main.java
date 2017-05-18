@@ -1,52 +1,76 @@
 
-import controllers.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.javalite.activejdbc.Base;
 
+import java.io.IOException;
+
 public class Main extends Application{
 
-    private static Stage stage;
-
-    public static Stage getstage() {
-        return stage;
-    }
+    private Stage primaryStage;
+    private BorderPane rootLayout;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("B-50");
 
-        //Base is the database connection
-        Base.open();
+        initRootLayout();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getClassLoader().getResource("views/login/login.fxml"));
-        BorderPane root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Test");
-        stage.toFront();
-        stage.sizeToScene();
-        stage.show();
+        showLoginScreen();
+    }
 
-        Main.stage = stage;
+    /**
+     * Initializes the root layout.
+     */
+    public void initRootLayout() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("views/layout/rootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
 
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    /**
+     * Shows the login screen
+     */
+    public void showLoginScreen() {
+        try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("views/auth/login.fxml"));
+            AnchorPane loginScreen = (AnchorPane) loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(loginScreen);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    public static void main(String[] args) throws Exception{
+    /**
+     * Returns the main stage.
+     * @return
+     */
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
 
-        /*
-         * @param args
-         * @return Login instance
-         */
-
+    public static void main(String[] args) {
         launch(args);
-
     }
-
-
 
 }

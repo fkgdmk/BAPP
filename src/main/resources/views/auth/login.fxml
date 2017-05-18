@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="544.0" prefWidth="488.0" style="-fx-background-color: #9fccb7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+    <children>
+        <AnchorPane minHeight="35.0" style="-fx-background-color: #2e569f;" />
+    </children>
+   <children>
+      <BorderPane prefHeight="547.0" prefWidth="488.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+                 <AnchorPane blendMode="SRC_ATOP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="440.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                         <Insets bottom="40.0" />
+                     </BorderPane.margin>
+                     <children>
+                         <JFXTextField fx:id="userName" focusColor="#00844a" layoutX="83.0" layoutY="161.0" maxWidth="283.0" minWidth="179.0" prefHeight="38.0" prefWidth="283.0" promptText="Brugernavn">
+                             <font>
+                                 <Font name="Helvetica" size="16.0" />
+                             </font>
+                  </JFXTextField>
+                         <JFXPasswordField fx:id="userPassword" focusColor="#00844a" layoutX="81.0" layoutY="220.0" maxWidth="287.0" minWidth="173.0" prefHeight="38.0" prefWidth="287.0" promptText="Adgangskode">
+                             <font>
+                                 <Font name="Helvetica" size="16.0" />
+                             </font>
+                  </JFXPasswordField>
+                         <JFXButton fx:id="submit" alignment="CENTER" buttonType="RAISED" defaultButton="true" layoutX="102.0" layoutY="305.0" prefHeight="44.0" prefWidth="237.0" ripplerFill="#171717" style="-fx-background-color: #00844a; -fx-background-radius: 0;" text="Login" textFill="WHITE">
+                             <font>
+                                 <Font name="Helvetica Bold" size="14.0" />
+                             </font>
+                             <cursor>
+                                 <Cursor fx:constant="DEFAULT" />
+                             </cursor>
+                         </JFXButton>
+                         <Text fill="#757575" layoutX="121.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrations software v.1.0">
+                             <font>
+                                 <Font size="15.0" />
+                             </font>
+                         </Text>
+                         <Text fill="#00844a" layoutX="188.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SB50 " AnchorPane.bottomAnchor="374.1005859375" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="168.62109375" AnchorPane.topAnchor="52.8994140625">
+                             <font>
+                                 <Font name="Helvetica Bold" size="30.0" />
+                             </font>
+                         </Text>
+                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d5ece5" height="77.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="440.0" />
+                         <Text fill="#757575" layoutX="81.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Glemt adgangskode?">
+                             <font>
+                                 <Font name="Helvetica Bold" size="14.0" />
+                             </font>
+                         </Text>
+                         <Label layoutX="229.0" layoutY="409.0" text="Gendan adgangskode" textFill="#00aa55">
+                             <font>
+                                 <Font name="Helvetica Bold" size="14.0" />
+                             </font>
+                         </Label>
+                         <Text fx:id="invalidCredentials" fill="#fc5050" layoutX="118.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                             <font>
+                                 <Font name="Helvetica Bold" size="13.0" />
+                             </font>
+                         </Text>
+                         <JFXSpinner fx:id="loginLoader" layoutX="204.0" layoutY="311.0" visible="false" />
+                         <JFXCheckBox fx:id="rememberMe" checkedColor="#448aff" layoutX="81.0" layoutY="268.0" text="Remember me" textFill="#757575" visible="false" />
+                     </children>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+                  <effect>
+                     <DropShadow color="#00000045" height="17.96" radius="6.205" width="8.86" />
+                  </effect>
+                 </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
