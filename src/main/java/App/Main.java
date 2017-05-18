@@ -3,11 +3,14 @@ package App;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
+import javafx.scene.image.Image;
 
 public class Main extends Application{
 
@@ -18,6 +21,7 @@ public class Main extends Application{
     public void start(Stage primaryStage) {
         Main.primaryStage = primaryStage;
         Main.primaryStage.setTitle("BAPP");
+
 
         initRootLayout();
 
@@ -32,11 +36,12 @@ public class Main extends Application{
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/views/layout/rootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = loader.load();
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+            primaryStage.getIcons().add(new Image("/images/logo.png"));
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,7 +56,7 @@ public class Main extends Application{
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/views/auth/login.fxml"));
-            AnchorPane loginScreen = (AnchorPane) loader.load();
+            AnchorPane loginScreen = loader.load();
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(loginScreen);

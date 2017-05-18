@@ -2,13 +2,15 @@ package controllers.auth;
 
 import App.Main;
 import com.jfoenix.controls.JFXButton;
-import controllers.home.HomeController;
+import controllers.menu.MenuController;
+import controllers.messages.MessageController;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import sun.plugin2.message.Message;
 
 import java.io.IOException;
 
@@ -36,11 +38,13 @@ public class LoginController {
       try {
          //   Load person overview.
            FXMLLoader loader = new FXMLLoader();
-           loader.setLocation(HomeController.class.getResource("/views/pages/messages.fxml"));
+           loader.setLocation(MessageController.class.getResource("/views/messages/messages.fxml"));
            AnchorPane loginScreen = loader.load();
 
            BorderPane rootLayout =  Main.getRootLayout();
            Stage primaryStage = Main.getPrimaryStage();
+
+           showLeftMenu();
 
            rootLayout.setCenter(loginScreen);
 
@@ -53,6 +57,14 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showLeftMenu() throws IOException {
+        FXMLLoader leftMenu = new FXMLLoader(MenuController.class.getResource("/views/layout/leftMenu.fxml"));
+        AnchorPane leftMenuView = leftMenu.load();
+
+        BorderPane rootLayout =  Main.getRootLayout();
+        rootLayout.setLeft(leftMenuView);
     }
 
 }

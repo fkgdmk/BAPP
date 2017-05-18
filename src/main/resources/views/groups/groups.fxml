@@ -25,7 +25,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="544.0" prefWidth="1000.0" style="-fx-background-color: #e0e0e0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.home.HomeController">
+<AnchorPane prefHeight="544.0" prefWidth="1000.0" style="-fx-background-color: #e0e0e0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.groups.GroupController">
    <children>
                   <AnchorPane layoutX="119.0" layoutY="70.0" prefHeight="401.0" prefWidth="452.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="200.0">
                      <children>

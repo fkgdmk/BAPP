@@ -25,8 +25,11 @@
                 <version>8.6.0</version>
                 <configuration>
                     <mainClass>${mainClass}</mainClass>
-                    <identifier>${project.name}</identifier>
+                    <jfxMainAppJarName>Bapp.jar</jfxMainAppJarName>
+                    <identifier>Bapp</identifier>
                     <vendor>Dat16B</vendor>
+                    <appName>Bapp</appName>
+                    <needMenu>true</needMenu>
                     <verbose>true</verbose>
                 </configuration>
             </plugin>

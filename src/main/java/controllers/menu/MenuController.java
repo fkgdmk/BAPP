@@ -2,13 +2,16 @@ package controllers.menu;
 
 import App.Main;
 import com.jfoenix.controls.JFXButton;
-import controllers.home.HomeController;
+import controllers.groups.GroupController;
+import controllers.members.MemberController;
+import controllers.messages.MessageController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 
 import java.io.IOException;
 
@@ -33,23 +36,36 @@ public class MenuController {
         BorderPane rootLayout =  Main.getRootLayout();
 
         if (event.getSource() == members) {
-            members.setStyle("-fx-background-color: black");
-            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/pages/members.fxml"));
+            setActive(members);
+            FXMLLoader loader = new FXMLLoader(MemberController.class.getResource("/views/members/members.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
         if(event.getSource() == messages)
         {
-            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/pages/messages.fxml"));
+            setActive(messages);
+            FXMLLoader loader = new FXMLLoader(MessageController.class.getResource("/views/messages/messages.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
         if(event.getSource() == groups)
         {
-            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/pages/groups.fxml"));
+            setActive(groups);
+            FXMLLoader loader = new FXMLLoader(GroupController.class.getResource("/views/groups/groups.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
+
+    }
+
+
+    public void setActive (JFXButton active)
+    {
+        members.setStyle("-fx-background-color: #ffffff");
+        messages.setStyle("-fx-background-color: #ffffff");
+        groups.setStyle("-fx-background-color: #ffffff");
+
+        active.setStyle("-fx-background-color: #9fccb7");
 
     }
 
@@ -60,7 +76,7 @@ public class MenuController {
         try {
             //   Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(HomeController.class.getResource("/views/auth/login.fxml"));
+            loader.setLocation(MenuController.class.getResource("/views/auth/login.fxml"));
             AnchorPane loginScreen = loader.load();
 
             BorderPane rootLayout =  Main.getRootLayout();
