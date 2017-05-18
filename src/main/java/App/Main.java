@@ -1,3 +1,4 @@
+package App;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -5,19 +6,18 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.javalite.activejdbc.Base;
 
 import java.io.IOException;
 
 public class Main extends Application{
 
-    private Stage primaryStage;
-    private BorderPane rootLayout;
+    private static Stage primaryStage;
+    private static BorderPane rootLayout;
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("B-50");
+        Main.primaryStage = primaryStage;
+        Main.primaryStage.setTitle("BAPP");
 
         initRootLayout();
 
@@ -31,7 +31,7 @@ public class Main extends Application{
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("views/layout/rootLayout.fxml"));
+            loader.setLocation(Main.class.getResource("/views/layout/rootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
 
             // Show the scene containing the root layout.
@@ -50,7 +50,7 @@ public class Main extends Application{
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("views/auth/login.fxml"));
+            loader.setLocation(Main.class.getResource("/views/auth/login.fxml"));
             AnchorPane loginScreen = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
@@ -65,9 +65,14 @@ public class Main extends Application{
      * Returns the main stage.
      * @return
      */
-    public Stage getPrimaryStage() {
+    public static Stage getPrimaryStage() {
         return primaryStage;
     }
+
+    public static BorderPane getRootLayout() {
+        return rootLayout;
+    }
+
 
     public static void main(String[] args) {
         launch(args);

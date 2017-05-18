@@ -1,64 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxWidth="-Infinity" minHeight="500.0" minWidth="-Infinity" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.menu.MenuController">
    <children>
-      <Pane prefHeight="132.0" prefWidth="200.0">
+         <Pane prefHeight="132.0" prefWidth="200.0" AnchorPane.topAnchor="0.0" VBox.vgrow="NEVER">
+            <children>
+               <ImageView fitHeight="96.0" fitWidth="81.0" layoutX="61.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@/images/logo.png" />
+                  </image>
+               </ImageView>
+               <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="49.0" layoutY="105.0" prefHeight="17.0" prefWidth="102.0" text="Pia Eriksen" textAlignment="CENTER" textFill="#5d5d5d">
+                  <font>
+                     <Font name="Roboto Black" size="18.0" />
+                  </font>
+               </Label>
+            <Separator layoutY="127.0" prefHeight="11.0" prefWidth="200.0" />
+            </children>
+         </Pane>
+      <VBox layoutX="50.0" layoutY="230.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="169.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="149.0">
          <children>
-            <ImageView fitHeight="80.0" fitWidth="114.0" layoutX="57.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../Desktop/sb50logo.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="70.0" layoutY="105.0" prefHeight="17.0" prefWidth="75.0" text="Pia Eriksen">
+               <JFXButton onAction="#changePage" fx:id="members" alignment="TOP_LEFT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" ripplerFill="#9fccb7" text="Medlemmer" textFill="#5d5d5d" VBox.vgrow="SOMETIMES">
+                  <font>
+                     <Font name="Roboto Medium" size="15.0" />
+                  </font>
+               <padding>
+                  <Insets left="12.0" top="8.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/icons/icon-member.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               </JFXButton>
+               <JFXButton onAction="#changePage" fx:id="messages" alignment="TOP_LEFT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" ripplerFill="#9fccb7" text="Beskeder" textFill="#5d5d5d" VBox.vgrow="SOMETIMES">
+                  <font>
+                     <Font name="Roboto Medium" size="15.0" />
+                  </font>
+               <padding>
+                  <Insets left="12.0" top="8.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/icons/icon-mail.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               </JFXButton>
+               <JFXButton onAction="#changePage" fx:id="groups" alignment="TOP_LEFT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" ripplerFill="#9fccb7" text="Grupper" textFill="#5d5d5d" VBox.vgrow="SOMETIMES">
+                  <font>
+                     <Font name="Roboto Medium" size="15.0" />
+                  </font>
+               <padding>
+                  <Insets left="12.0" top="8.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/icons/icon-group.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               </JFXButton>
+         </children>
+      </VBox>
+      <VBox layoutX="50.0" layoutY="293.0" prefHeight="50.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+               <Separator prefHeight="14.0" prefWidth="200.0" />
+               <JFXButton fx:id="SignOutButton" onAction="#SignOut" alignment="TOP_LEFT" prefHeight="46.0" prefWidth="200.0" text="Log ud" textFill="#5d5d5d">
+               <graphic>
+                     <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@/images/icons/icon-lock.png" />
+                        </image>
+                     </ImageView>
+               </graphic>
                <font>
-                  <Font name="Roboto Bold" size="13.0" />
+                  <Font name="Roboto Medium" size="15.0" />
                </font>
-            </Label>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="12.0" top="10.0" />
+               </padding></JFXButton>
          </children>
-      </Pane>
-      <Pane prefHeight="142.0" prefWidth="200.0">
-         <children>
-            <Pane layoutY="20.0" prefHeight="122.0" prefWidth="200.0">
-               <children>
-                  <JFXButton layoutX="4.0" layoutY="42.0" prefHeight="39.0" prefWidth="188.0" text="Medlemmer" textFill="#5d5d5d">
-                     <font>
-                        <Font name="Roboto Bold" size="15.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="-2.0" layoutY="6.0" prefHeight="39.0" prefWidth="200.0" text="Beskeder" textFill="#5d5d5d" wrapText="true">
-                     <font>
-                        <Font name="Roboto Bold" size="15.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton layoutX="-5.0" layoutY="81.0" prefHeight="31.0" prefWidth="207.0" text="Grupper" textFill="#5d5d5d">
-                     <font>
-                        <Font name="Roboto Bold" size="15.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
-      <Pane prefHeight="232.0" prefWidth="200.0">
-         <children>
-            <Separator layoutY="157.0" prefHeight="11.0" prefWidth="200.0" />
-            <JFXButton layoutX="33.0" layoutY="178.0" prefHeight="25.0" prefWidth="102.0" text="Log ud" textFill="#5d5d5d" />
-            <ImageView fitHeight="19.0" fitWidth="28.0" layoutX="14.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../../../Desktop/android/drawable-hdpi/ic_lock_outline_black_24dp.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
+      </VBox>
    </children>
-</VBox>
+</AnchorPane>
