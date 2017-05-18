@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxWidth="-Infinity" minHeight="500.0" minWidth="-Infinity" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="132.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="114.0" layoutX="57.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Desktop/sb50logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="70.0" layoutY="105.0" prefHeight="17.0" prefWidth="75.0" text="Pia Eriksen">
+               <font>
+                  <Font name="Roboto Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="142.0" prefWidth="200.0">
+         <children>
+            <Pane layoutY="20.0" prefHeight="122.0" prefWidth="200.0">
+               <children>
+                  <JFXButton layoutX="4.0" layoutY="42.0" prefHeight="39.0" prefWidth="188.0" text="Medlemmer" textFill="#5d5d5d">
+                     <font>
+                        <Font name="Roboto Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="-2.0" layoutY="6.0" prefHeight="39.0" prefWidth="200.0" text="Beskeder" textFill="#5d5d5d" wrapText="true">
+                     <font>
+                        <Font name="Roboto Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="-5.0" layoutY="81.0" prefHeight="31.0" prefWidth="207.0" text="Grupper" textFill="#5d5d5d">
+                     <font>
+                        <Font name="Roboto Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane prefHeight="232.0" prefWidth="200.0">
+         <children>
+            <Separator layoutY="157.0" prefHeight="11.0" prefWidth="200.0" />
+            <JFXButton layoutX="33.0" layoutY="178.0" prefHeight="25.0" prefWidth="102.0" style="-fx-background-image: : url: (&quot;..\..\..\..\..\..\..\..\..\Desktop\sb50logo.png&quot;);" text="Log ud" textFill="#5d5d5d" />
+            <ImageView fitHeight="19.0" fitWidth="28.0" layoutX="14.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Desktop/android/drawable-hdpi/ic_lock_outline_black_24dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</VBox>
