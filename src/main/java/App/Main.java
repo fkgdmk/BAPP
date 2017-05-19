@@ -9,8 +9,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.io.Console;
 import java.io.IOException;
+import java.util.Scanner;
+
 import javafx.scene.image.Image;
+import org.javalite.activejdbc.Base;
+import seeders.UserTableSeeder;
 
 public class Main extends Application{
 
@@ -19,19 +24,25 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) {
+        Base.open();
         Main.primaryStage = primaryStage;
         Main.primaryStage.setTitle("BAPP");
-
 
         initRootLayout();
 
         showLoginScreen();
+
+        ConsoleTools tools = new ConsoleTools();
+        tools.setDaemon(true);
+        tools.start();
+
     }
 
     /**
      * Initializes the root layout.
      */
-    public void initRootLayout() {
+    public void initRootLayout()
+    {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
@@ -51,7 +62,8 @@ public class Main extends Application{
     /**
      * Shows the login screen
      */
-    public void showLoginScreen() {
+    public void showLoginScreen()
+    {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -64,6 +76,7 @@ public class Main extends Application{
             e.printStackTrace();
         }
     }
+
 
 
     /**
