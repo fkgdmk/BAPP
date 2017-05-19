@@ -37,7 +37,7 @@ public class MenuController {
 
         if (event.getSource() == members) {
             setActive(members);
-            FXMLLoader loader = new FXMLLoader(MemberController.class.getResource("/views/members/members.fxml"));
+            FXMLLoader loader = new FXMLLoader(MemberController.class.getResource("/views/members/overview.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
