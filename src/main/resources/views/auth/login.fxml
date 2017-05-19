@@ -76,13 +76,12 @@
                                  <Font name="Helvetica Bold" size="14.0" />
                              </font>
                          </Label>
-                         <Text fx:id="invalidCredentials" fill="#fc5050" layoutX="118.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                         <Text fx:id="invalidCredentials" fill="#fc5050" layoutX="175.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forkert login" visible="false">
                              <font>
                                  <Font name="Helvetica Bold" size="13.0" />
                              </font>
                          </Text>
                          <JFXSpinner fx:id="loginLoader" layoutX="204.0" layoutY="311.0" visible="false" />
-                         <JFXCheckBox fx:id="rememberMe" checkedColor="#448aff" layoutX="81.0" layoutY="268.0" text="Remember me" textFill="#757575" visible="false" />
                   <ImageView fitHeight="92.0" fitWidth="75.0" layoutX="83.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/images/logo.png" />
