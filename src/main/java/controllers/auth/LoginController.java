@@ -10,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import sun.plugin2.message.Message;
 
 import java.io.IOException;
 
