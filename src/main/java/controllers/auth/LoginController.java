@@ -2,6 +2,8 @@ package controllers.auth;
 
 import App.Main;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import controllers.menu.MenuController;
 import controllers.messages.MessageController;
 import javafx.fxml.FXML;
@@ -9,7 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import services.AuthService;
 
 import java.io.IOException;
 
@@ -17,6 +21,9 @@ import java.io.IOException;
 public class LoginController {
 
     public JFXButton submit;
+    public JFXPasswordField userPassword;
+    public JFXTextField userName;
+    public Text invalidCredentials;
 
 
     /**
@@ -27,7 +34,15 @@ public class LoginController {
     @FXML
     private void Submit(ActionEvent event) throws Exception
     {
-        showHomeScreen();
+
+        AuthService authenticate = new AuthService();
+        boolean authenticated =  authenticate.Login(userName.getText(), userPassword.getText());
+
+        if(authenticated) {
+            showHomeScreen();
+        } else {
+            invalidCredentials.setVisible(true);
+        }
     }
 
     /**
