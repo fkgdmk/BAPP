@@ -12,12 +12,11 @@ import javafx.scene.layout.BorderPane;
 /**
  * Created by jasonkelly on 18/05/2017.
  */
-public class MemberController {
+public class  MemberController {
 
 
-    public JFXButton newMessage;
-    public JFXButton messageHistory;
-    public JFXButton messageTemplates;
+    public JFXButton overviewButton;
+    public JFXButton createMemberButton;
 
 
     @FXML
@@ -25,20 +24,14 @@ public class MemberController {
     {
         BorderPane rootLayout =  Main.getRootLayout();
 
-        if (event.getSource() == newMessage) {
-            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/messages/messages.fxml"));
+        if (event.getSource() == createMemberButton) {
+            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/members/members.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
-        if(event.getSource() == messageHistory)
+        if(event.getSource() == overviewButton)
         {
-            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/messages/history.fxml"));
-            AnchorPane view = loader.load();
-            rootLayout.setCenter(view);
-        }
-        if(event.getSource() == messageTemplates)
-        {
-            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/messages/templates.fxml"));
+            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/members/overview.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
