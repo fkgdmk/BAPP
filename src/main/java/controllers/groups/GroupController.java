@@ -2,12 +2,14 @@ package controllers.groups;
 
 import App.Main;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
 import controllers.menu.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import services.GroupService;
 
 /**
  * Created by jasonkelly on 18/05/2017.
@@ -18,6 +20,12 @@ public class GroupController {
     public JFXButton newMessage;
     public JFXButton messageHistory;
     public JFXButton messageTemplates;
+    public JFXListView listVIew;
+
+    public void initialize () {
+        GroupService groupService = new GroupService();
+        groupService.setListView(listVIew);
+    }
 
 
     @FXML
