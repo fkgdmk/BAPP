@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.geometry.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.menu.MenuController">
+<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.menu.MenuController">
    <children>
          <Pane prefHeight="132.0" prefWidth="200.0" AnchorPane.topAnchor="0.0" VBox.vgrow="NEVER">
             <children>
@@ -34,22 +30,7 @@
          </Pane>
       <VBox layoutX="50.0" layoutY="230.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="169.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="149.0">
          <children>
-               <JFXButton onAction="#changePage" fx:id="members" alignment="TOP_LEFT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" ripplerFill="#9fccb7" text="Medlemmer" textFill="#5d5d5d" VBox.vgrow="SOMETIMES">
-                  <font>
-                     <Font name="Roboto Medium" size="15.0" />
-                  </font>
-               <padding>
-                  <Insets left="12.0" top="8.0" />
-               </padding>
-               <graphic>
-                  <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@/images/icons/icon-member.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               </JFXButton>
-               <JFXButton onAction="#changePage" fx:id="messages" alignment="TOP_LEFT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" ripplerFill="#9fccb7" text="Beskeder" textFill="#5d5d5d" VBox.vgrow="SOMETIMES">
+               <JFXButton fx:id="messages" alignment="TOP_LEFT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onAction="#changePage" prefHeight="40.0" ripplerFill="#9fccb7" text="Beskeder" textFill="#5d5d5d" VBox.vgrow="SOMETIMES">
                   <font>
                      <Font name="Roboto Medium" size="15.0" />
                   </font>
@@ -64,7 +45,22 @@
                   </ImageView>
                </graphic>
                </JFXButton>
-               <JFXButton onAction="#changePage" fx:id="groups" alignment="TOP_LEFT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" ripplerFill="#9fccb7" text="Grupper" textFill="#5d5d5d" VBox.vgrow="SOMETIMES">
+               <JFXButton fx:id="members" alignment="TOP_LEFT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onAction="#changePage" prefHeight="40.0" ripplerFill="#9fccb7" text="Medlemmer" textFill="#5d5d5d" VBox.vgrow="SOMETIMES">
+                  <font>
+                     <Font name="Roboto Medium" size="15.0" />
+                  </font>
+               <padding>
+                  <Insets left="12.0" top="8.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/icons/icon-member.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               </JFXButton>
+               <JFXButton fx:id="groups" alignment="TOP_LEFT" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" onAction="#changePage" prefHeight="40.0" ripplerFill="#9fccb7" text="Grupper" textFill="#5d5d5d" VBox.vgrow="SOMETIMES">
                   <font>
                      <Font name="Roboto Medium" size="15.0" />
                   </font>
@@ -84,7 +80,7 @@
       <VBox layoutX="50.0" layoutY="293.0" prefHeight="50.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
                <Separator prefHeight="14.0" prefWidth="200.0" />
-               <JFXButton fx:id="SignOutButton" onAction="#SignOut" alignment="TOP_LEFT" prefHeight="46.0" prefWidth="200.0" text="Log ud" textFill="#5d5d5d">
+               <JFXButton fx:id="SignOutButton" alignment="TOP_LEFT" onAction="#SignOut" prefHeight="46.0" prefWidth="200.0" text="Log ud" textFill="#5d5d5d">
                <graphic>
                      <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                         <image>
