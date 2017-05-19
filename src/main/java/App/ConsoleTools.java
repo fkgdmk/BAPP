@@ -1,6 +1,7 @@
 package App;
 
 import org.javalite.activejdbc.Base;
+import seeders.MemberTableSeeder;
 import seeders.UserTableSeeder;
 
 import java.util.Scanner;
@@ -53,5 +54,6 @@ public class ConsoleTools extends Thread {
         userSeed.Seed();
         System.out.println("Seeder done");
     }
+
 
 }
