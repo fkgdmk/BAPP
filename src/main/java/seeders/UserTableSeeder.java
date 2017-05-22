@@ -5,7 +5,8 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class UserTableSeeder {
 
-    public void Seed(){
+    public void Seed()
+    {
         String hashed = BCrypt.hashpw("bapp", BCrypt.gensalt());
         User p = new User();
         p.set("name", "Pia Eriksen");
@@ -13,5 +14,6 @@ public class UserTableSeeder {
         p.set("password", hashed);
         p.saveIt();
     }
+
 
 }

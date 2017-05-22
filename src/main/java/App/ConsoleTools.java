@@ -1,6 +1,8 @@
 package App;
 
 import org.javalite.activejdbc.Base;
+import seeders.ContactTableSeeder;
+import seeders.GroupTableSeeder;
 import seeders.UserTableSeeder;
 
 import java.util.Scanner;
@@ -26,32 +28,56 @@ public class ConsoleTools extends Thread {
             Command = scanner.nextLine();
 
             switch (Command) {
-                case "bapp:seed":
-                    runSeeder();
+                case "bapp:seed --user":
+                    runUserSeeder();
                     break;
                 case "bapp:end":
                     Base.close();
                     run = false;
                     System.out.println("Killed");
                     break;
+                case "bapp:seed --contact":
+                    runContactSeeder();
+                    break;
+                case "bapp:seed --group":
+                    runGroupSeeder();
+                    break;
                 default: System.out.println("Command not found");
                     break;
             }
-
         }
-
         return false;
     }
 
     /**
      * Run database seeder
      */
-    private void runSeeder()
+    private void runUserSeeder ()
     {
         System.out.println("Running seeder");
         UserTableSeeder userSeed = new UserTableSeeder();
         userSeed.Seed();
+
         System.out.println("Seeder done");
     }
+
+    private void runContactSeeder (){
+
+        System.out.println("Running seeder");
+        ContactTableSeeder contactSeeder = new ContactTableSeeder();
+        contactSeeder.Seed();
+        System.out.println("Seeder done");
+
+    }
+
+    private void runGroupSeeder () {
+
+        System.out.println("Running seeder");
+        GroupTableSeeder groupSeeder = new GroupTableSeeder();
+        groupSeeder.Seed();
+        System.out.println("Seeder done");
+
+    }
+
 
 }
