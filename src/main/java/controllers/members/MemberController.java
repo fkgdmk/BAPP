@@ -18,7 +18,7 @@ import services.MemberService;
 /**
  * Created by jasonkelly on 18/05/2017.
  */
-public class MemberController {
+public class  MemberController {
 
 
     public JFXButton overviewButton;
