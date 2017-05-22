@@ -16,8 +16,8 @@ public class MemberService
         pickGroup.getItems().add(new Label("Gruppe 1"));
         pickGroup.getItems().add(new Label("Gruppe 2"));
         pickGroup.getItems().add(new Label("Gruppe 3"));
-
-
     }
+
+
 
 }

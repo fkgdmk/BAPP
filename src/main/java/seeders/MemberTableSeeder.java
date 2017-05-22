@@ -1,9 +1,6 @@
 package seeders;
 
 import models.ContactPerson;
-import models.Group;
-import models.Member;
-import models.User;
 
 /**
  * Created by Fredrik on 19-05-2017.
@@ -11,12 +8,13 @@ import models.User;
 public class MemberTableSeeder
 {
 
-    public void Seed (String email, int phone) {
+    public void Seed (String email, String phone) {
 
         ContactPerson cp = new ContactPerson();
 
         cp.set("email", email);
         cp.set("phone", phone);
         cp.saveIt();
+
     }
 }

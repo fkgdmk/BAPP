@@ -11,8 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import jdk.nashorn.internal.runtime.ECMAException;
-import seeders.MemberTableSeeder;
+import seeders.ContactTableSeeder;
+import services.ContactService;
 import services.MemberService;
 
 /**
@@ -29,33 +29,42 @@ public class  MemberController {
     public JFXTextField email;
     public JFXComboBox pickGroup;
     public JFXButton addMember;
+    public Label statusLabel;
+
 
     public void initialize () {
 
         if(pickGroup != null) {
-
 
             MemberService service = new MemberService();
 
             service.setGroupPicker(pickGroup);
 
         }
-
     }
 
     @FXML
-    private void addMember (ActionEvent event) throws Exception
+    private void addContact(ActionEvent event) throws Exception
     {
 
-        if (event.getSource() == addMember) {
 
-            MemberTableSeeder mSeed = new MemberTableSeeder();
+        if ((event.getSource() == addMember)) {
+            statusLabel.setVisible(false);
+            ContactService contactService = new ContactService();
 
-            mSeed.Seed(firstname.getText(), 30703294);
+            boolean contactAdded = contactService.addContactToDB(email.getText(), phoneNumber.getText());
+
+            if(contactAdded) {
+
+                statusLabel.setStyle("-fx-text-fill: lime");
+                statusLabel.setText("Medlem oprettet");
+                statusLabel.setVisible(true);
+
+            } else {
+                statusLabel.setVisible(true);
+            }
 
         }
-
-
     }
 
 
