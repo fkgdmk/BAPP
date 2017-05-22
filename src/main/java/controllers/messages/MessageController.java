@@ -1,8 +1,7 @@
 package controllers.messages;
 
 import App.Main;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.*;
 import controllers.menu.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,10 +29,22 @@ public class MessageController
     public JFXTextArea messageTextArea;
     public Label date;
     public VBox sentMessagesContainer;
-    
+    public JFXTextField subjectTextField;
+    public JFXCheckBox email_CheckBox;
+    public JFXCheckBox text_CheckBox;
+    public JFXCheckBox facebook_CheckBox;
+    public JFXToggleButton sendToGroup1Button;
+    public JFXToggleButton sendToGroup2Button;
+    public JFXToggleButton sendToGroup3Button;
+
+    public boolean sendEmail = false;
+    public boolean sendText = false;
+    public boolean sendFacebook = false;
+    public boolean sendToGroup1 = false;
+    public boolean sendToGroup2 = false;
+    public boolean sendToGroup3 = false;
 
     public static MessageService messageService;
-
 
 
     public void initialize()
@@ -42,6 +53,7 @@ public class MessageController
         messageService.setTextArea(messageTextArea);
         messageService.setDateLabel(date);
         messageService.setSentMessagesContainer(sentMessagesContainer);
+        messageService.setTextField(subjectTextField);
     }
 
     @FXML
@@ -66,6 +78,94 @@ public class MessageController
     }
 
     @FXML
+    private void handleCheckBoxes(ActionEvent event)
+    {
+        if (event.getSource() == email_CheckBox)
+        {
+            if (sendEmail)
+            {
+                sendEmail = false;
+                System.out.println("E:" + sendEmail);
+            }
+            else
+            {
+                sendEmail = true;
+                System.out.println("E:" + sendEmail);
+            }
+        }
+
+        if (event.getSource() == text_CheckBox)
+        {
+            if (sendText)
+            {
+                sendText = false;
+                System.out.println("T:" + sendText);
+            }
+            else
+            {
+                sendText = true;
+                System.out.println("T:" + sendText);
+            }
+        }
+
+        if (event.getSource() == facebook_CheckBox)
+        {
+            if (sendFacebook)
+            {
+                sendFacebook = false;
+                System.out.println("F:" + sendFacebook);
+            }
+            else
+            {
+                sendFacebook = true;
+                System.out.println("F:" + sendFacebook);
+            }
+        }
+
+        if (event.getSource() == sendToGroup1Button)
+        {
+            if (sendToGroup1)
+            {
+                sendToGroup1 = false;
+                System.out.println("G1:" + sendToGroup1);
+            }
+            else
+            {
+                sendToGroup1 = true;
+                System.out.println("G1:" + sendToGroup1);
+            }
+        }
+
+        if (event.getSource() == sendToGroup2Button)
+        {
+            if (sendToGroup2)
+            {
+                sendToGroup2 = false;
+                System.out.println("G2:" + sendToGroup2);
+            }
+            else
+            {
+                sendToGroup2 = true;
+                System.out.println("G2:" + sendToGroup2);
+            }
+        }
+
+        if (event.getSource() == sendToGroup3Button)
+        {
+            if (sendToGroup3)
+            {
+                sendToGroup3 = false;
+                System.out.println("G3:" + sendToGroup3);
+            }
+            else
+            {
+                sendToGroup3 = true;
+                System.out.println("G3:" + sendToGroup3);
+            }
+        }
+    }
+
+    @FXML
     private void getMessageContainer()
     {
         VBox container = messageService.container;
@@ -77,8 +177,25 @@ public class MessageController
     {
         if (event.getSource() == sendMessage)
         {
-            messageService.saveMessage();
-            messageService.sendMessage();
+            if (sendToGroup1 || sendToGroup2 || sendToGroup3)
+            {
+                if (sendEmail || sendText || sendFacebook)
+                {
+                    messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
+                            sendToGroup2, sendToGroup3);
+                    messageService.sendMessage();
+                }
+
+                else
+                {
+                    System.out.println("Please select recipient.");
+                }
+            }
+
+            else
+            {
+                System.out.println("Please insert subject.");
+            }
         }
     }
 
