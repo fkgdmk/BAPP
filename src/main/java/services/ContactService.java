@@ -18,6 +18,7 @@ public class ContactService
             cp.set("phone", phone);
             cp.saveIt();
 
+            System.out.println("Contact oprettet");
             return true;
 
         } catch (Exception e) {

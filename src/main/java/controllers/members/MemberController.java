@@ -47,14 +47,19 @@ public class  MemberController {
     private void addContact(ActionEvent event) throws Exception
     {
 
-
         if ((event.getSource() == addMember)) {
             statusLabel.setVisible(false);
             ContactService contactService = new ContactService();
+            MemberService memberService = new MemberService();
 
             boolean contactAdded = contactService.addContactToDB(email.getText(), phoneNumber.getText());
 
-            if(contactAdded) {
+
+            boolean memberAdded = memberService.addMemberToDB(firstname.getText() + lastname.getText(),
+                    pickGroup.getSelectionModel().getSelectedItem().toString(), email.getText());
+
+
+            if(memberAdded) {
 
                 statusLabel.setStyle("-fx-text-fill: lime");
                 statusLabel.setText("Medlem oprettet");
@@ -66,6 +71,8 @@ public class  MemberController {
 
         }
     }
+
+
 
 
     @FXML
