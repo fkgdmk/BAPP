@@ -21,10 +21,15 @@ public class GroupController {
     public JFXButton messageHistory;
     public JFXButton messageTemplates;
     public JFXListView listVIew;
+    public JFXButton group1;
+    public JFXButton group2;
+    public JFXButton group3;
+    private GroupService groupService;
+
 
     public void initialize () {
-        GroupService groupService = new GroupService();
-        groupService.setListView(listVIew);
+        this.groupService = new GroupService();
+        this.groupService.setListView(listVIew, group1.getParent().getId().toString());
     }
 
 
@@ -33,20 +38,20 @@ public class GroupController {
     {
         BorderPane rootLayout =  Main.getRootLayout();
 
-        if (event.getSource() == newMessage) {
-            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/messages/messages.fxml"));
+        if (event.getSource() == group1) {
+            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/groups/groups.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
-        if(event.getSource() == messageHistory)
+        if(event.getSource() == group2)
         {
-            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/messages/history.fxml"));
+            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/groups/group2.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
-        if(event.getSource() == messageTemplates)
+        if(event.getSource() == group3)
         {
-            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/messages/templates.fxml"));
+            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/groups/group3.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }

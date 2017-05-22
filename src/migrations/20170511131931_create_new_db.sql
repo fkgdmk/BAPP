@@ -65,12 +65,12 @@ CREATE TABLE IF NOT EXISTS `bapp`.`members` (
   INDEX `members_groups_idx` (`group_id` ASC),
   CONSTRAINT `members_contact_persons`
     FOREIGN KEY (`contact_person_id`)
-    REFERENCES `mydb`.`contact_persons` (`id`)
+    REFERENCES `bapp`.`contact_persons` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `members_groups`
     FOREIGN KEY (`group_id`)
-    REFERENCES `mydb`.`groups` (`id`)
+    REFERENCES `bapp`.`groups` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
