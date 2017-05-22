@@ -23,7 +23,6 @@ public class AuthService {
                     user = authUser;
                     return true;
                 }
-
             }
 
             return false;
