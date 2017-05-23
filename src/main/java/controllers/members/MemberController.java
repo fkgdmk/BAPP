@@ -136,8 +136,13 @@ public class  MemberController {
 
     @FXML
     private void showContactAnchor () {
-        contactAnchor.setVisible(true);
-        pickContact.setVisible(false);
+
+        if (newContactCheckBox.isSelected()) {
+            contactAnchor.setVisible(true);
+            pickContact.setVisible(false);
+        } else {
+            
+        }
     }
 
 
