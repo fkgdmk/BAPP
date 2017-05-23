@@ -13,4 +13,5 @@ hs_err_pid*
 
 .idea/*
 /src/main/resources/database.properties
+/src/main/resources/config.properties
 /target
