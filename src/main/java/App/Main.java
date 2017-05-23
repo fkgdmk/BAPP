@@ -3,19 +3,13 @@ package App;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.awt.*;
-import java.io.Console;
-import java.io.IOException;
-import java.util.Scanner;
-
-import javafx.scene.image.Image;
 import org.javalite.activejdbc.Base;
-import seeders.UserTableSeeder;
+
+import java.io.IOException;
 
 public class Main extends Application{
 
@@ -23,7 +17,7 @@ public class Main extends Application{
     private static BorderPane rootLayout;
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         Base.open();
         Main.primaryStage = primaryStage;
         Main.primaryStage.setTitle("BAPP");

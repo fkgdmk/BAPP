@@ -177,24 +177,17 @@ public class MessageController
     {
         if (event.getSource() == sendMessage)
         {
-            if (sendToGroup1 || sendToGroup2 || sendToGroup3)
-            {
-                if (sendEmail || sendText || sendFacebook)
-                {
-                    messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
-                            sendToGroup2, sendToGroup3);
-                    messageService.sendMessage();
-                }
 
-                else
-                {
-                    System.out.println("Please select recipient.");
-                }
+            if (sendEmail || sendText || sendFacebook)
+            {
+                messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
+                        sendToGroup2, sendToGroup3);
+                messageService.sendMessage();
             }
 
             else
             {
-                System.out.println("Please insert subject.");
+                System.out.println("Please select media.");
             }
         }
     }

@@ -6,8 +6,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import controllers.menu.MenuController;
 import controllers.messages.MessageController;
-import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 import services.AuthService;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 
 
 public class LoginController {
@@ -50,6 +52,8 @@ public class LoginController {
      */
     public void showHomeScreen() {
       try {
+
+          System.out.println(new Timestamp(new Date().getTime()));
          //   Load person overview.
            FXMLLoader loader = new FXMLLoader();
            loader.setLocation(MessageController.class.getResource("/views/messages/messages.fxml"));
@@ -58,9 +62,7 @@ public class LoginController {
            BorderPane rootLayout =  Main.getRootLayout();
            Stage primaryStage = Main.getPrimaryStage();
 
-           showLeftMenu();
-
-           rootLayout.setCenter(loginScreen);
+            showLeftMenu();
 
           // Set width and height
           if (!primaryStage.isFullScreen()) {
@@ -68,6 +70,9 @@ public class LoginController {
               primaryStage.setWidth(1200);
               primaryStage.centerOnScreen();
           }
+          System.out.println(new Timestamp(new Date().getTime()));
+            rootLayout.setCenter(loginScreen);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

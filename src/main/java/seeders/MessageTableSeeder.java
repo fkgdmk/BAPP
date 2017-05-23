@@ -17,10 +17,6 @@ public class MessageTableSeeder
         m.set("media_email", e);
         m.set("media_textmessage", t);
         m.set("media_facebook", f);
-        m.set("send_to_group1", g1);
-        m.set("send_to_group2", g2);
-        m.set("send_to_group3", g3);
-        //set media booleans
         m.saveIt();
     }
 }

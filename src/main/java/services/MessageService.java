@@ -1,10 +1,9 @@
 package services;
 
-import com.jfoenix.controls.JFXCheckBox;
+import Notifications.Notification;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -12,7 +11,7 @@ import models.Message;
 import models.User;
 import seeders.MessageTableSeeder;
 
-import java.sql.Timestamp;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,8 +19,8 @@ import java.util.List;
  */
 public class MessageService
 {
-    public JFXTextArea textArea;
-    public JFXTextField textField;
+    public JFXTextArea textArea; //message
+    public JFXTextField textField; //subject
     public Label dateLabel;
     public VBox container;
     public boolean email_CheckBox;
@@ -51,6 +50,22 @@ public class MessageService
     public void saveMessage(boolean email_CheckBox, boolean text_CheckBox, boolean facebook_CheckBox,
                             boolean sendToGroup1, boolean sendToGroup2, boolean sendToGroup3)
     {
+
+        Notification notification = new Notification(
+                "test@example.com",
+                "frederik.lippert@gmail.com",
+                textField.getText(),
+                textArea.getText()
+        );
+            if(email_CheckBox){
+            try {
+                notification.sendMail();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            }
+
+
         MessageTableSeeder messageTableSeeder = new MessageTableSeeder();
         messageTableSeeder.Seed(textArea.getText(), textField.getText(),
                 email_CheckBox, text_CheckBox, facebook_CheckBox, sendToGroup1, sendToGroup2, sendToGroup3);
@@ -108,31 +123,6 @@ public class MessageService
             //Set entry labels to show the corresponding value from the database
             Label subject_Label = (Label) messageInfo.getChildren().get(0);
             subject_Label.setText(list.get(i).get("message_subject").toString());
-
-            //FIXME: Set database values (currently hardcoded)
-            Label recipient_Label = (Label) messageInfo.getChildren().get(1);
-            String s = "Gruppe:";
-            if (list.get(i).get("send_to_group1") != "0" && list.get(i).get("send_to_group2") != "0"
-                    && list.get(i).get("send_to_group3") != "0" )
-            {
-                System.out.println(list.get(i).get("send_to_group1").toString());
-                if (list.get(i).get("send_to_group1").toString() == "true")
-                {
-                    s += " 1";
-                }
-
-                if (list.get(i).get("send_to_group2").toString() == "true")
-                {
-                    s += " 2";
-                }
-
-                if (list.get(i).get("send_to_group3").toString() == "true")
-                {
-                    s += " 3";
-                }
-            }
-
-            recipient_Label.setText(s);
 
             //FIXME: Set sender to be autenticated user, not just first user in DB
             Label sender_Label = (Label) messageInfo.getChildren().get(2);
