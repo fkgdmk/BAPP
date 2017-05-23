@@ -1,6 +1,10 @@
 package services;
 
+import com.jfoenix.controls.JFXComboBox;
 import models.ContactPerson;
+import models.Group;
+
+import java.util.List;
 
 /**
  * Created by Fredrik on 22-05-2017.
@@ -26,4 +30,28 @@ public class ContactService
         }
 
     }
+
+    public void setGroupPicker (JFXComboBox pickGroup)
+    {
+        List<Group> groups = Group.findAll();
+
+        for (Group g: groups)
+        {
+            pickGroup.getItems().add(g.get("name").toString());
+
+        }
+
+    }
+
+    public void setContactPicker (JFXComboBox pickContact)
+    {
+        List <ContactPerson> contactEmails = ContactPerson.findAll();
+
+        for (ContactPerson c: contactEmails)
+        {
+            pickContact.getItems().add(c.get("email"));
+        }
+    }
+
+
 }
