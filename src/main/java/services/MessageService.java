@@ -7,8 +7,8 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import models.Message;
-import models.User;
+import models.*;
+import seeders.MemberTableSeeder;
 import seeders.MessageTableSeeder;
 
 import java.io.IOException;
@@ -22,6 +22,7 @@ public class MessageService
     public JFXTextArea textArea; //message
     public JFXTextField textField; //subject
     public Label dateLabel;
+    public Label errorLabel;
     public VBox container;
     public boolean email_CheckBox;
     public boolean text_CheckBox;
@@ -30,6 +31,11 @@ public class MessageService
     public void setTextArea(JFXTextArea _textArea)
     {
         textArea = _textArea;
+    }
+
+    public void setErrorLabel(Label _errorLabel)
+    {
+        errorLabel = _errorLabel;
     }
 
     public void setTextField(JFXTextField _textField)
@@ -50,22 +56,6 @@ public class MessageService
     public void saveMessage(boolean email_CheckBox, boolean text_CheckBox, boolean facebook_CheckBox,
                             boolean sendToGroup1, boolean sendToGroup2, boolean sendToGroup3)
     {
-
-        Notification notification = new Notification(
-                "test@example.com",
-                "frederik.lippert@gmail.com",
-                textField.getText(),
-                textArea.getText()
-        );
-            if(email_CheckBox){
-            try {
-                notification.sendMail();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            }
-
-
         MessageTableSeeder messageTableSeeder = new MessageTableSeeder();
         messageTableSeeder.Seed(textArea.getText(), textField.getText(),
                 email_CheckBox, text_CheckBox, facebook_CheckBox, sendToGroup1, sendToGroup2, sendToGroup3);
@@ -145,8 +135,34 @@ public class MessageService
         container.getChildren().remove(index);
     }
 
-    public void sendMessage()
+    public void sendMessage(int groupId)
     {
-        //send message
+        MemberTableSeeder memberTableSeeder = new MemberTableSeeder();
+        
+
+        List<Member> membersInGroup = Member.findById(groupId);
+        for (int i = 0; i < membersInGroup.size(); i++)
+        {
+            Member member = membersInGroup.get(i);
+            //ContactPerson contactPerson = (ContactPerson) member.get("contact_person_id");
+            //String email = membersInGroup.get(i).get("")
+            System.out.println(member.get("name") + " " + member.get("group_id"));
+        }
+
+        /*
+        Notification notification = new Notification(
+                "test@example.com",
+                "frederik.lippert@gmail.com",
+                textField.getText(),
+                textArea.getText()
+        );
+
+        if(email_CheckBox){
+            try {
+                notification.sendMail();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }*/
     }
 }
