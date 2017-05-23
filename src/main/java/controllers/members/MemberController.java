@@ -141,7 +141,8 @@ public class  MemberController {
             contactAnchor.setVisible(true);
             pickContact.setVisible(false);
         } else {
-            
+            contactAnchor.setVisible(false);
+            pickContact.setVisible(true);
         }
     }
 
