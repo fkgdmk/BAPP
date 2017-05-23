@@ -137,10 +137,8 @@ public class MessageService
 
     public void sendMessage(int groupId)
     {
-        MemberTableSeeder memberTableSeeder = new MemberTableSeeder();
-        
 
-        List<Member> membersInGroup = Member.findById(groupId);
+        List<Member> membersInGroup = Member.findAll();
         for (int i = 0; i < membersInGroup.size(); i++)
         {
             Member member = membersInGroup.get(i);
