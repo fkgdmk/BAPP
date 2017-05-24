@@ -8,6 +8,7 @@ import models.Member;
 import org.javalite.activejdbc.Base;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +21,14 @@ public class SendService extends Thread
     private int groupID;
     private String subject;
     private String message;
+    private List<Integer> groupIDs = new ArrayList<>();
 
     private boolean runThread;
 
-    public SendService (int _groupID, boolean _sendEmail, boolean _sendText, JFXTextField _subject, JFXTextArea _message)
+    public SendService (int _groupID, boolean _sendEmail, boolean _sendText,
+                        JFXTextField _subject, JFXTextArea _message, List<Integer> _groupIDs)
     {
+        groupIDs = _groupIDs;
         groupID = _groupID;
         sendEmail = _sendEmail;
         sendText = _sendText;
@@ -43,10 +47,46 @@ public class SendService extends Thread
         }
     }
 
-    public void sendEmailsToGroup()
+    private void sendEmailsToGroup()
     {
+        int amountOfGroups = groupIDs.size();
         List<Member> membersInGroup = Member.where("group_id =?", groupID);
 
+        for (int x = 0; x < amountOfGroups; x++)
+        {
+            //Collect members in group(s).
+            membersInGroup.addAll(Member.where("group_id =?", groupIDs.get(x)));
+
+            //Get their corresponding emails.
+            ContactPerson contactPerson = ContactPerson.findFirst("id =?",
+                    membersInGroup.get(x).get("contact_person_id"));
+            String recipient = contactPerson.get("email").toString();
+
+            //Create notification to send
+            Notification notification = new Notification(
+                    "test@example.com",
+                    recipient,
+                    subject,
+                    message
+            );
+
+            //Send email if requested
+            if(sendEmail){
+                try {
+                    notification.sendMail();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            //Send text if requested
+            if (sendText)
+            {
+                System.out.println("Send text too (SendService)");
+            }
+        }
+
+        /*
         //Find all the members in a group
         for (int i = 0; i < membersInGroup.size(); i++)
         {
@@ -55,7 +95,6 @@ public class SendService extends Thread
             //Get their corresponding emails.
             ContactPerson contactPerson = ContactPerson.findFirst("id =?", member.get("contact_person_id"));
             String recipient = contactPerson.get("email").toString();
-            String recipientSMS = contactPerson.get("phone").toString();
 
             //Send email
             Notification notification = new Notification(
@@ -73,22 +112,11 @@ public class SendService extends Thread
                 }
             }
 
-            System.out.println("før sms test");
             if (sendText)
             {
-                System.out.println("sms test");
-                System.out.println("test");
-
-                Notification notifi = new Notification(
-                        "+4530703294",
-                        recipientSMS,
-                        subject,
-                        message
-                );
-
-                notifi.sendSMS();
+                System.out.println("Send text too (SendService)");
             }
-        }
+        }*/
 
         runThread = false;
     }

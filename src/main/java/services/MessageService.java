@@ -52,26 +52,13 @@ public class MessageService
     }
 
     public void saveMessage(boolean email_CheckBox, boolean text_CheckBox, boolean facebook_CheckBox,
-                            boolean sendToGroup1, boolean sendToGroup2, boolean sendToGroup3) {
-
-        Notification notification = new Notification(
-                "test@example.com",
-                "frederik.lippert@gmail.com",
-                textField.getText(),
-                textArea.getText()
-        );
-        if (email_CheckBox) {
-            try {
-                notification.sendMail();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
+                            boolean sendToGroup1, boolean sendToGroup2,
+                            boolean sendToGroup3)
+    {
         MessageTableSeeder messageTableSeeder = new MessageTableSeeder();
         messageTableSeeder.Seed(textArea.getText(), textField.getText(),
-                email_CheckBox, text_CheckBox, facebook_CheckBox, sendToGroup1, sendToGroup2, sendToGroup3);
+                email_CheckBox, text_CheckBox, facebook_CheckBox,
+                sendToGroup1, sendToGroup2, sendToGroup3);
     }
 
     public void showSentMessages() {
@@ -206,9 +193,10 @@ public class MessageService
     }
  **/
 
-    public void sendMessage(int groupId, boolean mail, boolean text) {
+    public void sendMessage(int groupId, boolean mail, boolean text, List<Integer> groupIDs)
+    {
         //saveMessage(email_CheckBox,);
-        SendService emailThread = new SendService(groupId, mail, text, textField, textArea);
+        SendService emailThread = new SendService(groupId, mail, text, textField, textArea, groupIDs);
         emailThread.setDaemon(true);
         emailThread.start();
 
