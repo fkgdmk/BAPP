@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `bapp`.messages
+CREATE TABLE IF NOT EXISTS `jasonkel_bapp`.messages
 (
     id int(10) unsigned auto_increment
         primary key,

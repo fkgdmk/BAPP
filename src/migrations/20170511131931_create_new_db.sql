@@ -14,13 +14,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema bapp
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `bapp` DEFAULT CHARACTER SET utf8 ;
-USE `bapp` ;
+CREATE SCHEMA IF NOT EXISTS `jasonkel_bapp` DEFAULT CHARACTER SET utf8 ;
+USE `jasonkel_bapp` ;
 
 -- -----------------------------------------------------
 -- Table `bapp`.`users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bapp`.`users` (
+CREATE TABLE IF NOT EXISTS `jasonkel_bapp`.`users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
@@ -32,7 +32,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `bapp`.`contact_persons`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bapp`.`contact_persons` (
+CREATE TABLE IF NOT EXISTS `jasonkel_bapp`.`contact_persons` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NOT NULL,
   `phone` INT UNSIGNED NOT NULL,
@@ -45,7 +45,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `bapp`.`groups`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bapp`.`groups` (
+CREATE TABLE IF NOT EXISTS `jasonkel_bapp`.`groups` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -55,7 +55,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `bapp`.`members`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bapp`.`members` (
+CREATE TABLE IF NOT EXISTS `jasonkel_bapp`.`members` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `contact_person_id` INT UNSIGNED NOT NULL,
@@ -65,12 +65,12 @@ CREATE TABLE IF NOT EXISTS `bapp`.`members` (
   INDEX `members_groups_idx` (`group_id` ASC),
   CONSTRAINT `members_contact_persons`
     FOREIGN KEY (`contact_person_id`)
-    REFERENCES `bapp`.`contact_persons` (`id`)
+    REFERENCES `jasonkel_bapp`.`contact_persons` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `members_groups`
     FOREIGN KEY (`group_id`)
-    REFERENCES `bapp`.`groups` (`id`)
+    REFERENCES `jasonkel_bapp`.`groups` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

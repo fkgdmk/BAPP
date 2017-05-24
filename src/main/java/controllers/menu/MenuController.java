@@ -8,9 +8,11 @@ import controllers.messages.MessageController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import services.AuthService;
 
 
 import java.io.IOException;
@@ -22,10 +24,18 @@ public class MenuController {
     public JFXButton groups;
     public JFXButton messages;
     public JFXButton members;
+    public Label userName;
+
+    public void initialize ()
+    {
+        this.userName.setText(AuthService.user().get("name").toString());
+    }
+
 
     @FXML
     private void SignOut(ActionEvent event) throws Exception
     {
+        AuthService.Logout();
         showLoginScreen();
     }
 
