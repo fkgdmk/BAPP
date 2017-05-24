@@ -67,7 +67,7 @@
                   <Font name="Roboto" size="20.0" />
                </font>
             </Label>
-            <JFXButton fx:id="addMember" buttonType="RAISED" layoutX="576.0" layoutY="222.0" onAction="#addContact" prefHeight="32.0" prefWidth="88.0" style="-fx-background-color: #9fccb7;" text="OPRET" AnchorPane.bottomAnchor="40.0">
+            <JFXButton fx:id="addMember" buttonType="RAISED" defaultButton="true" layoutX="576.0" layoutY="222.0" onAction="#addContact" prefHeight="32.0" prefWidth="88.0" style="-fx-background-color: #9fccb7;" text="OPRET" AnchorPane.bottomAnchor="40.0">
                <font>
                   <Font name="Roboto Bold" size="12.0" />
                </font>

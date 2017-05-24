@@ -1,6 +1,13 @@
 //This file needs to be renamed database.properties
 
+Local host:
 development.driver=com.mysql.jdbc.Driver
 development.username=USERNAME
 development.password=PASSWORD
 development.url=jdbc:mysql://HOST:3306/DB
+
+remote db:
+development.driver=com.mysql.jdbc.Driver
+development.username=jasonkel_bapp
+development.password=ocV-7fE-KHa-QwT
+development.url=jdbc:mysql://server1.jcr-hosting.dk:3306/jasonkel_bapp
