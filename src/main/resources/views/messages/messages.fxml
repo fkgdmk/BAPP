@@ -75,7 +75,8 @@
                               <Font name="Roboto" size="10.0" />
                            </font>
                         </Label>
-                        <JFXToggleButton fx:id="sendToGroup1Button" layoutX="14.0" layoutY="101.0" onAction="#handleCheckBoxes" prefHeight="61.0" prefWidth="149.0" style="-fx-background-color: #ffff;" text="Gruppe 1" unToggleLineColor="#9fccb7" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="80.0">
+                <JFXToggleButton fx:id="sendToGroup1Button" onAction="#handleCheckBoxes" layoutX="14.0" layoutY="101.0" prefHeight="61.0" prefWidth="149.0" style="-fx-background-color: #ffff;" text="Gruppe 1" unToggleLineColor="#9fccb7" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="80.0">
+
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>

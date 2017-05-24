@@ -10,11 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import models.Member;
 import services.ContactService;
 import services.MemberService;
 
@@ -50,6 +47,7 @@ public class  MemberController {
     public JFXTextField newPhoneNr;
     public JFXTextField newEmail;
     public JFXCheckBox newContactCheckBox;
+    public JFXButton cancelNewInfo;
 
 
     public void initialize () {
@@ -148,10 +146,6 @@ public class  MemberController {
     @FXML
     private void addContact(ActionEvent event) throws Exception
     {
-
-        if ((event.getSource() == addMember))
-        {
-            statusLabel.setVisible(false);
             ContactService contactService = new ContactService();
             MemberService memberService = new MemberService();
 
@@ -180,8 +174,6 @@ public class  MemberController {
             {
                 statusLabel.setVisible(true);
             }
-
-        }
     }
 
 
@@ -192,7 +184,8 @@ public class  MemberController {
     {
         BorderPane rootLayout =  Main.getRootLayout();
 
-        if (event.getSource() == createMemberButton) {
+        if (event.getSource() == createMemberButton)
+        {
             FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/members/members.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
@@ -203,13 +196,20 @@ public class  MemberController {
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
-        if (event.getSource() == editMemberButton) {
+        if (event.getSource() == editMemberButton)
+        {
 
             FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/members/editMember.fxml"));
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
-
         }
+        if(event.getSource() == cancelNewInfo)
+        {
+            FXMLLoader loader = new FXMLLoader(MenuController.class.getResource("/views/members/overview.fxml"));
+            AnchorPane view = loader.load();
+            rootLayout.setCenter(view);
+        }
+
 
     }
 

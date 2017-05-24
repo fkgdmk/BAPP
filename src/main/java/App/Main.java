@@ -1,5 +1,6 @@
 package App;
 
+import Notifications.Providers.SMS.NexmoProvider;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +18,9 @@ public class Main extends Application{
     private static BorderPane rootLayout;
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws Exception {
+
+
         Base.open();
         Main.primaryStage = primaryStage;
         Main.primaryStage.setTitle("BAPP");

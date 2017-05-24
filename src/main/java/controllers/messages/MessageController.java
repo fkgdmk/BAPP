@@ -1,6 +1,7 @@
 package controllers.messages;
 
 import App.Main;
+import Notifications.Providers.SMS.NexmoProvider;
 import com.jfoenix.controls.*;
 import controllers.menu.MenuController;
 import javafx.event.ActionEvent;
@@ -37,16 +38,17 @@ public class MessageController
     public JFXToggleButton sendToGroup2Button;
     public JFXToggleButton sendToGroup3Button;
 
+    public Label errorLabel;
+
+
     public boolean sendEmail = false;
     public boolean sendText = false;
     public boolean sendFacebook = false;
     public boolean sendToGroup1 = false;
     public boolean sendToGroup2 = false;
     public boolean sendToGroup3 = false;
-    public Label errorLabel;
 
     public static MessageService messageService;
-
 
 
     public void initialize()
@@ -57,6 +59,13 @@ public class MessageController
         messageService.setSentMessagesContainer(sentMessagesContainer);
         messageService.setTextField(subjectTextField);
         messageService.setErrorLabel(errorLabel);
+    }
+
+    public void sendNewMessage () throws Exception {
+
+        NexmoProvider n = new NexmoProvider();
+
+        n.sendSMS("+4530703294", "+4561307580", "Hva så");
     }
 
     @FXML
@@ -204,13 +213,10 @@ public class MessageController
             if (subjectTextField.getText().isEmpty() == false)
             {
                 if (sendEmail || sendText || sendFacebook)
-                {
-                    //messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
-                            //sendToGroup2, sendToGroup3);
-
-
-
-
+                {                  
+                    messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
+                        sendToGroup2, sendToGroup3);
+                    messageService.sendMessage();
                 }
 
                 else
@@ -219,13 +225,13 @@ public class MessageController
                     errorLabel.setText("Vælg venligst et medie");
                     errorLabel.setVisible(true);
                 }
-            }
 
             else
             {
                 System.out.println("Please insert subject");
                 errorLabel.setText("Indtast venligst et emne");
                 errorLabel.setVisible(true);
+                System.out.println("Please select media.");
             }
         }
     }
