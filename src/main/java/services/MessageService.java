@@ -11,7 +11,10 @@ import javafx.scene.layout.VBox;
 
 import models.*;
 import seeders.MessageTableSeeder;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 import models.Message;
 import models.User;
 
@@ -215,22 +218,5 @@ public class MessageService
                 notifi.sendSMS();
             }
         }
-
-        /* Testing (send til Lippert)
-        Notification notification = new Notification(
-                    "test@example.com",
-                    "frederik.lippert@gmail.com",
-                    textField.getText(),
-                    textArea.getText()
-            );
-
-            if(email_CheckBox){
-                try {
-                    notification.sendMail();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-         */
     }
 }
