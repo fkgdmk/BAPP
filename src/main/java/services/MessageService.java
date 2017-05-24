@@ -9,10 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import models.*;
-import seeders.MemberTableSeeder;
 import seeders.MessageTableSeeder;
-
-import java.util.ArrayList
 import models.Message;
 import models.User;
 
@@ -185,22 +182,5 @@ public class MessageService
                 }
             }
         }
-
-        /* Testing (send til Lippert)
-        Notification notification = new Notification(
-                    "test@example.com",
-                    "frederik.lippert@gmail.com",
-                    textField.getText(),
-                    textArea.getText()
-            );
-
-            if(email_CheckBox){
-                try {
-                    notification.sendMail();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-         */
     }
 }
