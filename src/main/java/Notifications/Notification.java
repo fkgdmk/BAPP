@@ -2,6 +2,7 @@ package Notifications;
 
 import App.GetProperties;
 import Notifications.Providers.Mail.SendgridProvider;
+import Notifications.Providers.SMS.NexmoProvider;
 
 import java.io.IOException;
 
@@ -24,6 +25,21 @@ public class Notification {
 
     public void sendMail () throws IOException {
         Object response = this.getAdapter();
+    }
+
+    public void sendSMS ()  {
+
+        NexmoProvider n = new NexmoProvider();
+
+        try {
+            n.sendSMS(from, to, body);
+            System.out.println("SMS blev sendt");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("SMS blev ikke sendt");
+        }
+
     }
 
 

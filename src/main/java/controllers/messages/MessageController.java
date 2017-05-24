@@ -199,7 +199,7 @@ public class MessageController
             {
                 id = 2;
             }
-            else if (sendToGroup2)
+            else if (sendToGroup3)
             {
                 id = 3;
             }
@@ -208,22 +208,17 @@ public class MessageController
                 id = 2;
             }
 
-            messageService.sendMessage(id);
-            if (subjectTextField.getText().isEmpty() == false)
-            {
-                if (sendEmail || sendText || sendFacebook)
-                {                  
+            if (subjectTextField.getText().isEmpty() == false) {
+                if (sendEmail || sendText || sendFacebook) {
                     messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
-                        sendToGroup2, sendToGroup3);
-                    messageService.sendMessage();
-                }
-
-                else
-                {
+                            sendToGroup2, sendToGroup3);
+                    messageService.sendMessage(id);
+                } else {
                     System.out.println("Please select media.");
                     errorLabel.setText("Vælg venligst et medie");
                     errorLabel.setVisible(true);
                 }
+            }
 
             else
             {

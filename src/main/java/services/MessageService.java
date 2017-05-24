@@ -1,6 +1,7 @@
 package services;
 
 import Notifications.Notification;
+import Notifications.Providers.SMS.NexmoProvider;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.geometry.Insets;
@@ -9,10 +10,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import models.*;
-import seeders.MemberTableSeeder;
 import seeders.MessageTableSeeder;
 
-import java.util.ArrayList
 import models.Message;
 import models.User;
 
@@ -156,6 +155,21 @@ public class MessageService
         container.getChildren().remove(index);
     }
 
+    public void sendSMS (String text)  {
+
+        NexmoProvider n = new NexmoProvider();
+
+        try {
+            n.sendSMS("+4530703294", "+4561307580", text);
+            System.out.println("SMS blev sendt");
+
+        } catch (Exception e) {
+            System.out.println("SMS blev ikke sendt");
+        }
+
+    }
+
+
     public void sendMessage(int groupId)
     {
         List<Member> membersInGroup = Member.where("group_id =?", groupId);
@@ -167,22 +181,38 @@ public class MessageService
 
             //Get their corresponding emails.
             ContactPerson contactPerson = ContactPerson.findFirst("id =?", member.get("contact_person_id"));
-            String recipient = contactPerson.get("email").toString();
+            String recipientEmail = contactPerson.get("email").toString();
+            String recipientSMS = contactPerson.get("phone").toString();
 
-            //Send email
-            Notification notification = new Notification(
-                    "test@example.com",
-                    recipient,
-                    textField.getText(),
-                    textArea.getText()
-            );
-
+            System.out.println("email test");
             if(email_CheckBox){
+                    Notification notification = new Notification(
+                            "test@example.com",
+                            recipientEmail,
+                            textField.getText(),
+                            textArea.getText()
+                    );
                 try {
+
                     notification.sendMail();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+
+            System.out.println("sms test");
+            if (text_CheckBox) {
+
+                System.out.println("sms test");
+                System.out.println("test");
+
+                Notification notifi = new Notification(
+                        "+4530703294",
+                        recipientSMS,
+                        textField.getText(),
+                        textArea.getText()
+                );
+                notifi.sendSMS();
             }
         }
 
