@@ -56,6 +56,11 @@
                               <Font name="Roboto Bold" size="12.0" />
                            </font>
                         </JFXButton>
+            <Label fx:id="errorLabel" alignment="CENTER" layoutX="25.0" layoutY="255.0" prefHeight="20.0" prefWidth="300.0" text="Skriv et emne" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font name="Roboto" size="15.0" />
+               </font>
+            </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="535.0" prefWidth="378.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="200.0">
@@ -70,7 +75,7 @@
                               <Font name="Roboto" size="10.0" />
                            </font>
                         </Label>
-                        <JFXToggleButton fx:id="sendToGroup1Button" onAction="#handleCheckBoxes" layoutX="14.0" layoutY="101.0" prefHeight="61.0" prefWidth="149.0" style="-fx-background-color: #ffff;" text="Gruppe 1" unToggleLineColor="#9fccb7" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="80.0">
+                <JFXToggleButton fx:id="sendToGroup1Button" onAction="#handleCheckBoxes" layoutX="14.0" layoutY="101.0" prefHeight="61.0" prefWidth="149.0" style="-fx-background-color: #ffff;" text="Gruppe 1" unToggleLineColor="#9fccb7" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="80.0">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>

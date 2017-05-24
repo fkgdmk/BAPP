@@ -5,9 +5,9 @@ import com.sendgrid.*;
 
 import java.io.IOException;
 
-public class SendgridProvider implements MailInterface {
 
-
+public class SendgridProvider implements MailInterface
+{
     private String apiKey;
 
     public SendgridProvider(String apiKey) {
