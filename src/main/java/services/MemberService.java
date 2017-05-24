@@ -56,16 +56,18 @@ public class MemberService
 
                 boolean checked = checkBox.isSelected();
 
+                ContactPerson cp;
+
                 if (checked)
                 {
                     System.out.println("checkbox test");
-                ContactPerson cp = ContactPerson.findFirst("email = ?", contactEmail);
+                cp = ContactPerson.findFirst("email = ?", contactEmail);
                 m.set("contact_person_id", cp.get("id"));
 
                 } else
                 {
-                    ContactPerson c = ContactPerson.findFirst("email = ?", box.getSelectionModel().getSelectedItem().toString());
-                    m.set("contact_person_id", c.get("id"));
+                    cp = ContactPerson.findFirst("email = ?", box.getSelectionModel().getSelectedItem().toString());
+                    m.set("contact_person_id", cp.get("id"));
                 }
 
 
