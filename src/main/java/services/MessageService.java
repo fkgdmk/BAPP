@@ -7,9 +7,14 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import models.*;
+import seeders.MemberTableSeeder;
+import seeders.MessageTableSeeder;
+
+import java.util.ArrayList
 import models.Message;
 import models.User;
-import seeders.MessageTableSeeder;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,6 +27,7 @@ public class MessageService
     public JFXTextArea textArea; //message
     public JFXTextField textField; //subject
     public Label dateLabel;
+    public Label errorLabel;
     public VBox container;
     public boolean email_CheckBox;
     public boolean text_CheckBox;
@@ -30,6 +36,11 @@ public class MessageService
     public void setTextArea(JFXTextArea _textArea)
     {
         textArea = _textArea;
+    }
+
+    public void setErrorLabel(Label _errorLabel)
+    {
+        errorLabel = _errorLabel;
     }
 
     public void setTextField(JFXTextField _textField)
@@ -145,8 +156,51 @@ public class MessageService
         container.getChildren().remove(index);
     }
 
-    public void sendMessage()
+    public void sendMessage(int groupId)
     {
-        //send message
+        List<Member> membersInGroup = Member.where("group_id =?", groupId);
+
+        //Find all the members in a group
+        for (int i = 0; i < membersInGroup.size(); i++)
+        {
+            Member member = membersInGroup.get(i);
+
+            //Get their corresponding emails.
+            ContactPerson contactPerson = ContactPerson.findFirst("id =?", member.get("contact_person_id"));
+            String recipient = contactPerson.get("email").toString();
+
+            //Send email
+            Notification notification = new Notification(
+                    "test@example.com",
+                    recipient,
+                    textField.getText(),
+                    textArea.getText()
+            );
+
+            if(email_CheckBox){
+                try {
+                    notification.sendMail();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        /* Testing (send til Lippert)
+        Notification notification = new Notification(
+                    "test@example.com",
+                    "frederik.lippert@gmail.com",
+                    textField.getText(),
+                    textArea.getText()
+            );
+
+            if(email_CheckBox){
+                try {
+                    notification.sendMail();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+         */
     }
 }

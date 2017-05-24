@@ -127,8 +127,6 @@ public class  MemberController {
         MemberService mService = new MemberService();
 
         mService.editMemberNameInDB(searchForMember().toString(), newName.getText());
-
-
     }
 
 
@@ -148,7 +146,6 @@ public class  MemberController {
     @FXML
     private void addContact(ActionEvent event) throws Exception
     {
-            //statusLabel.setVisible(false);
             ContactService contactService = new ContactService();
             MemberService memberService = new MemberService();
 

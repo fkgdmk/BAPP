@@ -38,6 +38,9 @@ public class MessageController
     public JFXToggleButton sendToGroup2Button;
     public JFXToggleButton sendToGroup3Button;
 
+    public Label errorLabel;
+
+
     public boolean sendEmail = false;
     public boolean sendText = false;
     public boolean sendFacebook = false;
@@ -55,6 +58,7 @@ public class MessageController
         messageService.setDateLabel(date);
         messageService.setSentMessagesContainer(sentMessagesContainer);
         messageService.setTextField(subjectTextField);
+        messageService.setErrorLabel(errorLabel);
     }
 
     public void sendNewMessage () throws Exception {
@@ -185,16 +189,47 @@ public class MessageController
     {
         if (event.getSource() == sendMessage)
         {
+            int id;
 
-            if (sendEmail || sendText || sendFacebook)
+            if (sendToGroup1)
             {
-                messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
-                        sendToGroup2, sendToGroup3);
-                messageService.sendMessage();
+                id = 1;
             }
+            else if (sendToGroup2)
+            {
+                id = 2;
+            }
+            else if (sendToGroup2)
+            {
+                id = 3;
+            }
+            else
+            {
+                id = 2;
+            }
+
+            messageService.sendMessage(id);
+            if (subjectTextField.getText().isEmpty() == false)
+            {
+                if (sendEmail || sendText || sendFacebook)
+                {                  
+                    messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
+                        sendToGroup2, sendToGroup3);
+                    messageService.sendMessage();
+                }
+
+                else
+                {
+                    System.out.println("Please select media.");
+                    errorLabel.setText("Vælg venligst et medie");
+                    errorLabel.setVisible(true);
+                }
 
             else
             {
+                System.out.println("Please insert subject");
+                errorLabel.setText("Indtast venligst et emne");
+                errorLabel.setVisible(true);
                 System.out.println("Please select media.");
             }
         }

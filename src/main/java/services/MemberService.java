@@ -80,6 +80,7 @@ public class MemberService
             }
             catch (Exception e)
             {
+                System.out.println(e.getCause());
                 return false;
             }
     }
