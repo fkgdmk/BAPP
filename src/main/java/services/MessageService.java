@@ -51,14 +51,11 @@ public class MessageService
         container = _container;
     }
 
-    public void saveMessage(boolean email_CheckBox, boolean text_CheckBox, boolean facebook_CheckBox,
-                            boolean sendToGroup1, boolean sendToGroup2,
-                            boolean sendToGroup3)
+    public void saveMessage(boolean email_CheckBox, boolean text_CheckBox, boolean facebook_CheckBox)
     {
         MessageTableSeeder messageTableSeeder = new MessageTableSeeder();
         messageTableSeeder.Seed(textArea.getText(), textField.getText(),
-                email_CheckBox, text_CheckBox, facebook_CheckBox,
-                sendToGroup1, sendToGroup2, sendToGroup3);
+                email_CheckBox, text_CheckBox, facebook_CheckBox);
     }
 
     public void showSentMessages() {
@@ -196,7 +193,7 @@ public class MessageService
     public void sendMessage(int groupId, boolean mail, boolean text, List<Integer> groupIDs)
     {
         //saveMessage(email_CheckBox,);
-        SendService emailThread = new SendService(groupId, mail, text, textField, textArea, groupIDs);
+        SendService emailThread = new SendService(mail, text, textField, textArea, groupIDs);
         emailThread.setDaemon(true);
         emailThread.start();
 

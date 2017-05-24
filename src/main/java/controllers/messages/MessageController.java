@@ -155,8 +155,7 @@ public class MessageController
                 if (sendEmail || sendText || sendFacebook)
                 {
 
-                    messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
-                            sendToGroup2, sendToGroup3);
+                    messageService.saveMessage(sendEmail, sendText, sendFacebook);
                     messageService.sendMessage(id, sendEmail, sendText, groupIDs);
                 } else {
                     System.out.println("Please select media.");

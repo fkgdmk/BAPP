@@ -18,18 +18,16 @@ public class SendService extends Thread
 {
     private boolean sendEmail;
     private boolean sendText;
-    private int groupID;
     private String subject;
     private String message;
     private List<Integer> groupIDs = new ArrayList<>();
 
     private boolean runThread;
 
-    public SendService (int _groupID, boolean _sendEmail, boolean _sendText,
+    public SendService (boolean _sendEmail, boolean _sendText,
                         JFXTextField _subject, JFXTextArea _message, List<Integer> _groupIDs)
     {
         groupIDs = _groupIDs;
-        groupID = _groupID;
         sendEmail = _sendEmail;
         sendText = _sendText;
 
@@ -50,7 +48,7 @@ public class SendService extends Thread
     private void sendEmailsToGroup()
     {
         int amountOfGroups = groupIDs.size();
-        List<Member> membersInGroup = Member.where("group_id =?", groupID);
+        List<Member> membersInGroup = new ArrayList<>();
 
         for (int x = 0; x < amountOfGroups; x++)
         {
@@ -93,38 +91,6 @@ public class SendService extends Thread
                 notifi.sendSMS();
             }
         }
-
-        /*
-        //Find all the members in a group
-        for (int i = 0; i < membersInGroup.size(); i++)
-        {
-            Member member = membersInGroup.get(i);
-
-            //Get their corresponding emails.
-            ContactPerson contactPerson = ContactPerson.findFirst("id =?", member.get("contact_person_id"));
-            String recipient = contactPerson.get("email").toString();
-
-            //Send email
-            Notification notification = new Notification(
-                    "test@example.com",
-                    recipient,
-                    subject,
-                    message
-            );
-
-            if(sendEmail){
-                try {
-                    notification.sendMail();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            if (sendText)
-            {
-                System.out.println("Send text too (SendService)");
-            }
-        }*/
 
         runThread = false;
     }
