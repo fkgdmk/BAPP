@@ -60,12 +60,13 @@ public class SendService extends Thread
             //Get their corresponding emails.
             ContactPerson contactPerson = ContactPerson.findFirst("id =?",
                     membersInGroup.get(x).get("contact_person_id"));
-            String recipient = contactPerson.get("email").toString();
+            String recipientEmail = contactPerson.get("email").toString();
+            String recipientSMS = contactPerson.get("phone").toString();
 
             //Create notification to send
             Notification notification = new Notification(
                     "test@example.com",
-                    recipient,
+                    recipientEmail,
                     subject,
                     message
             );
@@ -82,7 +83,14 @@ public class SendService extends Thread
             //Send text if requested
             if (sendText)
             {
-                System.out.println("Send text too (SendService)");
+                Notification notifi = new Notification(
+                        "+4530703294",
+                        recipientSMS,
+                        subject,
+                        message
+                );
+
+                notifi.sendSMS();
             }
         }
 
