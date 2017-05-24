@@ -50,27 +50,31 @@ public class SendService extends Thread
         int amountOfGroups = groupIDs.size();
         List<Member> membersInGroup = new ArrayList<>();
 
-        for (int x = 0; x < amountOfGroups; x++)
+        //Collect members in group(s).
+        for (int i = 0; i < amountOfGroups; i++)
         {
-            //Collect members in group(s).
-            membersInGroup.addAll(Member.where("group_id =?", groupIDs.get(x)));
+            membersInGroup.addAll(Member.where("group_id =?", groupIDs.get(i)));
+        }
 
-            //Get their corresponding emails.
+        for (int x = 0; x < membersInGroup.size(); x++)
+        {
+            //Get their corresponding emails and phonenumbers.
             ContactPerson contactPerson = ContactPerson.findFirst("id =?",
                     membersInGroup.get(x).get("contact_person_id"));
-            String recipientEmail = contactPerson.get("email").toString();
-            String recipientSMS = contactPerson.get("phone").toString();
-
-            //Create notification to send
-            Notification notification = new Notification(
-                    "test@example.com",
-                    recipientEmail,
-                    subject,
-                    message
-            );
 
             //Send email if requested
-            if(sendEmail){
+            if(sendEmail)
+            {
+                String recipientEmail = contactPerson.get("email").toString();
+
+                //Create notification to send
+                Notification notification = new Notification(
+                        "test@example.com",
+                        recipientEmail,
+                        subject,
+                        message
+                );
+
                 try {
                     notification.sendMail();
                 } catch (IOException e) {
@@ -81,6 +85,7 @@ public class SendService extends Thread
             //Send text if requested
             if (sendText)
             {
+                String recipientSMS = contactPerson.get("phone").toString();
                 Notification notifi = new Notification(
                         "+4530703294",
                         recipientSMS,
