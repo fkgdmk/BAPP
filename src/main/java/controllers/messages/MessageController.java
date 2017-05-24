@@ -7,6 +7,7 @@ import controllers.menu.MenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -92,89 +93,31 @@ public class MessageController
     @FXML
     private void handleCheckBoxes(ActionEvent event)
     {
-        if (event.getSource() == email_CheckBox)
+        ButtonBase button = (ButtonBase) event.getSource();
+        System.out.println("Source: " + button.getId().toString());
+
+        switch (button.getId())
         {
-            if (sendEmail)
-            {
-                sendEmail = false;
-                System.out.println("E:" + sendEmail);
-            }
-            else
-            {
-                sendEmail = true;
-                System.out.println("E:" + sendEmail);
-            }
+            case "email_CheckBox":
+                sendEmail = email_CheckBox.isSelected();
+                break;
+            case "text_CheckBox":
+                sendText = text_CheckBox.isSelected();
+                break;
+            case "facebook_CheckBox":
+                sendFacebook = facebook_CheckBox.isSelected();
+                break;
+            case "sendToGroup1Button":
+                sendToGroup1 = sendToGroup1Button.isSelected();
+                break;
+            case "sendToGroup2Button":
+                sendToGroup2 = sendToGroup2Button.isSelected();
+                break;
+            case "sendToGroup3Button":
+                sendToGroup3 = sendToGroup3Button.isSelected();
+                break;
         }
 
-        if (event.getSource() == text_CheckBox)
-        {
-            if (sendText)
-            {
-                sendText = false;
-                System.out.println("T:" + sendText);
-            }
-            else
-            {
-                sendText = true;
-                System.out.println("T:" + sendText);
-            }
-        }
-
-        if (event.getSource() == facebook_CheckBox)
-        {
-            if (sendFacebook)
-            {
-                sendFacebook = false;
-                System.out.println("F:" + sendFacebook);
-            }
-            else
-            {
-                sendFacebook = true;
-                System.out.println("F:" + sendFacebook);
-            }
-        }
-
-        if (event.getSource() == sendToGroup1Button)
-        {
-            if (sendToGroup1)
-            {
-                sendToGroup1 = false;
-                System.out.println("G1:" + sendToGroup1);
-            }
-            else
-            {
-                sendToGroup1 = true;
-                System.out.println("G1:" + sendToGroup1);
-            }
-        }
-
-        if (event.getSource() == sendToGroup2Button)
-        {
-            if (sendToGroup2)
-            {
-                sendToGroup2 = false;
-                System.out.println("G2:" + sendToGroup2);
-            }
-            else
-            {
-                sendToGroup2 = true;
-                System.out.println("G2:" + sendToGroup2);
-            }
-        }
-
-        if (event.getSource() == sendToGroup3Button)
-        {
-            if (sendToGroup3)
-            {
-                sendToGroup3 = false;
-                System.out.println("G3:" + sendToGroup3);
-            }
-            else
-            {
-                sendToGroup3 = true;
-                System.out.println("G3:" + sendToGroup3);
-            }
-        }
     }
 
     @FXML
