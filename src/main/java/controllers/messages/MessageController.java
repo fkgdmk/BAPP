@@ -208,20 +208,14 @@ public class MessageController
                 id = 2;
             }
 
-<<<<<<< HEAD
-            if (subjectTextField.getText().isEmpty() == false) {
-                if (sendEmail || sendText || sendFacebook) {
-=======
-            messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1, sendToGroup2, sendToGroup3);
-            messageService.sendMessage(id, sendEmail, sendText);
             if (subjectTextField.getText().isEmpty() == false)
             {
                 if (sendEmail || sendText || sendFacebook)
-                {                  
->>>>>>> origin/master
+                {
+
                     messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
                             sendToGroup2, sendToGroup3);
-                    messageService.sendMessage(id);
+                    messageService.sendMessage(id, sendEmail, sendText);
                 } else {
                     System.out.println("Please select media.");
                     errorLabel.setText("Vælg venligst et medie");
@@ -241,7 +235,7 @@ public class MessageController
 
 
     @FXML
-    private void handleTabNavigation(ActionEvent event) throws Exception
+    private void handleTabNavigation (ActionEvent event) throws Exception
     {
         BorderPane rootLayout =  Main.getRootLayout();
 

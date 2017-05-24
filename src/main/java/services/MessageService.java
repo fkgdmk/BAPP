@@ -31,34 +31,28 @@ public class MessageService
     public boolean text_CheckBox;
     public boolean facebook_CheckBox;
 
-    public void setTextArea(JFXTextArea _textArea)
-    {
+    public void setTextArea(JFXTextArea _textArea) {
         textArea = _textArea;
     }
 
-    public void setErrorLabel(Label _errorLabel)
-    {
+    public void setErrorLabel(Label _errorLabel) {
         errorLabel = _errorLabel;
     }
 
-    public void setTextField(JFXTextField _textField)
-    {
+    public void setTextField(JFXTextField _textField) {
         textField = _textField;
     }
 
-    public void setDateLabel(Label _dateLabel)
-    {
+    public void setDateLabel(Label _dateLabel) {
         dateLabel = _dateLabel;
     }
 
-    public void setSentMessagesContainer(VBox _container)
-    {
+    public void setSentMessagesContainer(VBox _container) {
         container = _container;
     }
 
     public void saveMessage(boolean email_CheckBox, boolean text_CheckBox, boolean facebook_CheckBox,
-                            boolean sendToGroup1, boolean sendToGroup2, boolean sendToGroup3)
-    {
+                            boolean sendToGroup1, boolean sendToGroup2, boolean sendToGroup3) {
 
         Notification notification = new Notification(
                 "test@example.com",
@@ -66,13 +60,13 @@ public class MessageService
                 textField.getText(),
                 textArea.getText()
         );
-            if(email_CheckBox){
+        if (email_CheckBox) {
             try {
                 notification.sendMail();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            }
+        }
 
 
         MessageTableSeeder messageTableSeeder = new MessageTableSeeder();
@@ -80,8 +74,7 @@ public class MessageService
                 email_CheckBox, text_CheckBox, facebook_CheckBox, sendToGroup1, sendToGroup2, sendToGroup3);
     }
 
-    public void showSentMessages()
-    {
+    public void showSentMessages() {
         //Get messages in DB and store them in a list
         List<Message> list = Message.findAll();
 
@@ -96,12 +89,10 @@ public class MessageService
 
         //If we have more messages in the database, than there are
         //entries (HBoxes) in the container (VBox), we have to create new ones.
-        if (difference > 0)
-        {
+        if (difference > 0) {
             System.out.println("There is a difference of " + difference + ". Creating new entries...");
             //Create message entries as needed
-            for (int i = 0; i < difference; i++)
-            {
+            for (int i = 0; i < difference; i++) {
                 HBox newHBox = new HBox(40);
                 newHBox.setPadding(new Insets(0, 0, 15, 0));
                 newHBox.setPrefHeight(20);
@@ -116,7 +107,7 @@ public class MessageService
                 dat.setPrefWidth(120);
                 newHBox.getChildren().addAll(sub, rec, sen, dat);
 
-                container.getChildren().add(amountOfMessages-(difference), newHBox);
+                container.getChildren().add(amountOfMessages - (difference), newHBox);
             }
         }
 
@@ -124,8 +115,7 @@ public class MessageService
         amountOfChildren = container.getChildren().size();
 
         //Loop through all VBox-entries
-        for (int i = 0; i < amountOfChildren; i++)
-        {
+        for (int i = 0; i < amountOfChildren; i++) {
             //Grab an entry (child @ i)
             HBox messageInfo = (HBox) container.getChildren().get(i);
 
@@ -143,8 +133,7 @@ public class MessageService
         }
     }
 
-    public void deleteSentMessage(int index)
-    {
+    public void deleteSentMessage(int index) {
         //delete from database
         List<Message> messages = Message.findAll();
         Message messageToDelete = messages.get(index);
@@ -154,8 +143,7 @@ public class MessageService
         container.getChildren().remove(index);
     }
 
-<<<<<<< HEAD
-    public void sendSMS (String text)  {
+    public void sendSMS(String text) {
 
         NexmoProvider n = new NexmoProvider();
 
@@ -169,14 +157,14 @@ public class MessageService
 
     }
 
+/**
+    public void sendMessage(int groupId) {
 
-    public void sendMessage(int groupId)
-    {
+
         List<Member> membersInGroup = Member.where("group_id =?", groupId);
 
         //Find all the members in a group
-        for (int i = 0; i < membersInGroup.size(); i++)
-        {
+        for (int i = 0; i < membersInGroup.size(); i++) {
             Member member = membersInGroup.get(i);
 
             //Get their corresponding emails.
@@ -185,13 +173,13 @@ public class MessageService
             String recipientSMS = contactPerson.get("phone").toString();
 
             System.out.println("email test");
-            if(email_CheckBox){
-                    Notification notification = new Notification(
-                            "test@example.com",
-                            recipientEmail,
-                            textField.getText(),
-                            textArea.getText()
-                    );
+            if (email_CheckBox) {
+                Notification notification = new Notification(
+                        "test@example.com",
+                        recipientEmail,
+                        textField.getText(),
+                        textArea.getText()
+                );
                 try {
 
                     notification.sendMail();
@@ -215,13 +203,15 @@ public class MessageService
                 notifi.sendSMS();
             }
         }
-=======
-    public void sendMessage(int groupId, boolean mail, boolean text)
-    {
+    }
+ **/
+
+    public void sendMessage(int groupId, boolean mail, boolean text) {
         //saveMessage(email_CheckBox,);
         SendService emailThread = new SendService(groupId, mail, text, textField, textArea);
         emailThread.setDaemon(true);
         emailThread.start();
->>>>>>> origin/master
+
     }
 }
+

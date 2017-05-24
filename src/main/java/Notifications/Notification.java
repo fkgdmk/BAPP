@@ -32,7 +32,7 @@ public class Notification {
         NexmoProvider n = new NexmoProvider();
 
         try {
-            n.sendSMS(from, to, body);
+            n.sendSMS(from, "+45"+to, body);
             System.out.println("SMS blev sendt");
 
         } catch (Exception e) {
