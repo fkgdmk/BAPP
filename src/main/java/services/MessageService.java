@@ -12,6 +12,7 @@ import seeders.MemberTableSeeder;
 import seeders.MessageTableSeeder;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -137,30 +138,49 @@ public class MessageService
 
     public void sendMessage(int groupId)
     {
+        List<Member> membersInGroup = Member.where("group_id =?", groupId);
 
-        List<Member> membersInGroup = Member.findAll();
+        //Find all the members in a group
         for (int i = 0; i < membersInGroup.size(); i++)
         {
             Member member = membersInGroup.get(i);
-            //ContactPerson contactPerson = (ContactPerson) member.get("contact_person_id");
-            //String email = membersInGroup.get(i).get("")
-            System.out.println(member.get("name") + " " + member.get("group_id"));
+
+            //Get their corresponding emails.
+            ContactPerson contactPerson = ContactPerson.findFirst("id =?", member.get("contact_person_id"));
+            String recipient = contactPerson.get("email").toString();
+
+            //Send email
+            Notification notification = new Notification(
+                    "test@example.com",
+                    recipient,
+                    textField.getText(),
+                    textArea.getText()
+            );
+
+            if(email_CheckBox){
+                try {
+                    notification.sendMail();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
-        /*
+        /* Testing (send til Lippert)
         Notification notification = new Notification(
-                "test@example.com",
-                "frederik.lippert@gmail.com",
-                textField.getText(),
-                textArea.getText()
-        );
+                    "test@example.com",
+                    "frederik.lippert@gmail.com",
+                    textField.getText(),
+                    textArea.getText()
+            );
 
-        if(email_CheckBox){
-            try {
-                notification.sendMail();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(email_CheckBox){
+                try {
+                    notification.sendMail();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-        }*/
+         */
     }
 }

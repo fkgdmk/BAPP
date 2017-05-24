@@ -129,8 +129,6 @@ public class  MemberController {
         MemberService mService = new MemberService();
 
         mService.editMemberNameInDB(searchForMember().toString(), newName.getText());
-
-
     }
 
 
@@ -153,19 +151,9 @@ public class  MemberController {
 
         if ((event.getSource() == addMember))
         {
-
             statusLabel.setVisible(false);
             ContactService contactService = new ContactService();
             MemberService memberService = new MemberService();
-
-
-//            if (email != null && phoneNumber != null) {
-//                boolean contactAdded = contactService.addContactToDB(email.getText(), phoneNumber.getText());
-//            } else {
-//
-//            }
-
-            //boolean accExisting = memberService.getExistingContactID(pickContact.getSelectionModel().getSelectedItem().toString());
 
             if (newContactCheckBox.isSelected()) {
                 contactAnchor.setVisible(true);

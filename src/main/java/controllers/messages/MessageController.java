@@ -180,29 +180,36 @@ public class MessageController
     {
         if (event.getSource() == sendMessage)
         {
+            int id;
+
+            if (sendToGroup1)
+            {
+                id = 1;
+            }
+            else if (sendToGroup2)
+            {
+                id = 2;
+            }
+            else if (sendToGroup2)
+            {
+                id = 3;
+            }
+            else
+            {
+                id = 2;
+            }
+
+            messageService.sendMessage(id);
             if (subjectTextField.getText().isEmpty() == false)
             {
                 if (sendEmail || sendText || sendFacebook)
                 {
-                    messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
-                            sendToGroup2, sendToGroup3);
+                    //messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
+                            //sendToGroup2, sendToGroup3);
 
-                    int id = 0;
 
-                    if (sendToGroup1)
-                    {
-                        id = 1;
-                    }
-                    else if (sendToGroup2)
-                    {
-                        id = 2;
-                    }
-                    else if (sendToGroup2)
-                    {
-                        id = 3;
-                    }
 
-                    messageService.sendMessage(id);
+
                 }
 
                 else
