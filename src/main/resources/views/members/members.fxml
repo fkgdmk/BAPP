@@ -42,57 +42,62 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="77.0" layoutY="193.0" prefHeight="294.0" prefWidth="756.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="167.0" AnchorPane.topAnchor="193.0">
+      <AnchorPane layoutX="77.0" layoutY="193.0" prefHeight="313.0" prefWidth="846.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="193.0">
          <children>
-            <Label layoutX="27.0" layoutY="33.0" prefHeight="32.0" prefWidth="215.0" style="-fx-text-fill: #00aa55;" text="Medlemsoplysninger" AnchorPane.leftAnchor="27.0">
+            <Label layoutX="27.0" layoutY="33.0" prefHeight="32.0" prefWidth="215.0" style="-fx-text-fill: #00aa55;" text="Medlemsoplysninger" AnchorPane.leftAnchor="80.0">
                <font>
                   <Font name="Roboto" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="104.0" style="-fx-text-fill: #626567;" text="Fornavn:">
+            <Label layoutX="80.0" layoutY="123.0" style="-fx-text-fill: #626567;" text="Fornavn:" AnchorPane.leftAnchor="80.0">
                <font>
                   <Font name="Roboto" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="167.0" style="-fx-text-fill: #626567;" text="Efternavn:">
+            <Label layoutX="80.0" layoutY="177.0" style="-fx-text-fill: #626567;" text="Efternavn:" AnchorPane.leftAnchor="80.0">
                <font>
                   <Font name="Roboto" size="14.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="firstname" focusColor="#00844a" layoutX="105.0" layoutY="93.0" prefHeight="35.0" prefWidth="150.0" unFocusColor="#9fccb7" />
-            <JFXTextField fx:id="lastname" focusColor="#00844a" layoutX="105.0" layoutY="156.0" prefHeight="35.0" prefWidth="150.0" unFocusColor="#9fccb7" />
-            <JFXComboBox fx:id="pickGroup" layoutX="29.0" layoutY="223.0" prefHeight="30.0" prefWidth="228.0" promptText="Vælg gruppe" visibleRowCount="3" AnchorPane.leftAnchor="29.0" />
-            <Label layoutX="424.0" layoutY="34.0" prefHeight="32.0" prefWidth="215.0" style="-fx-text-fill: #00aa55;" text="Kontaktoplysninger" AnchorPane.rightAnchor="117.0">
+            <JFXTextField fx:id="firstname" focusColor="#00844a" layoutX="150.0" layoutY="105.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="35.0" prefWidth="189.0" unFocusColor="#9fccb7" AnchorPane.leftAnchor="150.0" />
+            <JFXTextField fx:id="lastname" focusColor="#00844a" layoutX="150.0" layoutY="161.0" prefHeight="35.0" prefWidth="189.0" unFocusColor="#9fccb7" AnchorPane.leftAnchor="150.0" />
+            <JFXComboBox fx:id="pickGroup" layoutX="152.0" layoutY="238.0" prefHeight="30.0" prefWidth="189.0" promptText="Vælg gruppe" visibleRowCount="3" AnchorPane.leftAnchor="152.0" />
+            <Label layoutX="424.0" layoutY="34.0" prefHeight="32.0" prefWidth="215.0" style="-fx-text-fill: #00aa55;" text="Kontaktoplysninger" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="206.0">
                <font>
                   <Font name="Roboto" size="20.0" />
                </font>
             </Label>
-            <JFXButton fx:id="addMember" buttonType="RAISED" defaultButton="true" layoutX="576.0" layoutY="222.0" onAction="#addContact" prefHeight="32.0" prefWidth="88.0" style="-fx-background-color: #9fccb7;" text="OPRET" AnchorPane.bottomAnchor="40.0">
+            <JFXButton fx:id="addMember" buttonType="RAISED" defaultButton="true" layoutX="605.0" layoutY="236.0" onAction="#addContact" prefHeight="32.0" prefWidth="88.0" style="-fx-background-color: #9fccb7;" text="OPRET" AnchorPane.bottomAnchor="45.0">
                <font>
                   <Font name="Roboto Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXCheckBox fx:id="newContactCheckBox" layoutX="418.0" layoutY="83.0" onAction="#showContactAnchor" text="Opret ny kontakt" />
-            <AnchorPane fx:id="contactAnchor" layoutX="418.0" layoutY="106.0" prefHeight="122.0" prefWidth="268.0" visible="false">
+            <JFXCheckBox fx:id="newContactCheckBox" layoutX="423.0" layoutY="83.0" onAction="#showContactAnchor" prefHeight="17.0" prefWidth="123.0" text="Opret ny kontakt" AnchorPane.leftAnchor="423.0" />
+            <AnchorPane fx:id="contactAnchor" layoutX="418.0" layoutY="106.0" prefHeight="122.0" prefWidth="304.0" visible="false" AnchorPane.leftAnchor="425.0">
                <children>
-                  <Label layoutX="1.0" layoutY="22.0" style="-fx-text-fill: #626567;" text="Telefon nr:" AnchorPane.rightAnchor="190.0">
+                  <Label layoutY="19.0" style="-fx-text-fill: #626567;" text="Telefon nr:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="190.0">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="phoneNumber" focusColor="#00844a" layoutX="94.0" layoutY="4.0" prefHeight="35.0" prefWidth="146.0" unFocusColor="#9fccb7" />
-                  <Label layoutX="15.0" layoutY="69.0" style="-fx-text-fill: #626567;" text="Email:" AnchorPane.rightAnchor="215.0">
+                  <JFXTextField fx:id="phoneNumber" focusColor="#00844a" layoutX="78.0" prefHeight="35.0" prefWidth="189.0" unFocusColor="#9fccb7" AnchorPane.leftAnchor="78.0" />
+                  <Label layoutY="72.0" prefHeight="18.0" prefWidth="63.0" style="-fx-text-fill: #626567;" text="Email:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="241.0">
                      <font>
                         <Font name="Roboto" size="14.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="email" focusColor="#00844a" layoutX="92.0" layoutY="49.0" prefHeight="35.0" prefWidth="146.0" unFocusColor="#9fccb7" />
+                  <JFXTextField fx:id="email" focusColor="#00844a" layoutX="79.0" layoutY="52.0" prefHeight="35.0" prefWidth="189.0" unFocusColor="#9fccb7" AnchorPane.leftAnchor="79.0" />
                </children>
             </AnchorPane>
-            <JFXComboBox fx:id="pickContact" layoutX="424.0" layoutY="124.0" prefHeight="25.0" prefWidth="236.0" promptText="Vælg kontakt" />
-            <Label fx:id="statusLabel" layoutX="424.0" layoutY="225.0" prefHeight="27.0" prefWidth="138.0" text="Alle felter skal udfyldes" textFill="#e10000" visible="false">
+            <JFXComboBox fx:id="pickContact" layoutX="424.0" layoutY="119.0" prefHeight="25.0" prefWidth="267.0" promptText="Vælg kontakt" />
+            <Label fx:id="statusLabel" layoutX="455.0" layoutY="241.0" prefHeight="27.0" prefWidth="138.0" text="Alle felter skal udfyldes" textFill="#e10000" visible="false" AnchorPane.bottomAnchor="40.0">
                <font>
                   <Font name="Roboto" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="80.0" layoutY="252.0" style="-fx-text-fill: #626567;" text="Gruppe:" AnchorPane.leftAnchor="80.0">
+               <font>
+                  <Font name="Roboto" size="14.0" />
                </font>
             </Label>
          </children>
