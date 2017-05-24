@@ -18,7 +18,8 @@ import services.MemberService;
 /**
  * Created by jasonkelly on 18/05/2017.
  */
-public class  MemberController {
+public class  MemberController
+{
 
     public JFXButton overviewButton;
     public JFXButton createMemberButton;
@@ -50,33 +51,31 @@ public class  MemberController {
     public JFXButton cancelNewInfo;
 
 
-    public void initialize () {
+    public void initialize ()
+    {
 
-        if(pickGroup != null) {
-
+        if(pickGroup != null)
+        {
             MemberService service = new MemberService();
-
             service.setGroupPicker(pickGroup);
         }
 
-        if (pickContact != null) {
-
+        if (pickContact != null)
+        {
             ContactService cService = new ContactService();
-
             cService.setContactPicker(pickContact);
-
         }
     }
 
     @FXML
-    private Object searchForMember () throws Exception {
+    private Object searchForMember () throws Exception
+    {
 
             MemberService mService = new MemberService();
-
             boolean searchStatus = mService.searchForNameInDB(searchField.getText());
 
-            if (searchStatus) {
-
+            if (searchStatus)
+            {
                 firstnameLabel.setText(mService.getFirstName());
                 lastnameLabel.setText(mService.getLastName());
                 mailLabel.setText(mService.getMail());
@@ -90,14 +89,13 @@ public class  MemberController {
 
                 return searchField.getText();
 
-            } else {
-                System.out.println("Not found");
+            } else
+                {
+                    memberAnchor.setVisible(false);
+                    contactAnchor.setVisible(false);
 
-                memberAnchor.setVisible(false);
-                contactAnchor.setVisible(false);
-
-                notFoundLabel.setVisible(true);
-            }
+                    notFoundLabel.setVisible(true);
+                }
 
         return "";
 
@@ -108,11 +106,10 @@ public class  MemberController {
     {
 
        MemberService mService = new MemberService();
-
        boolean status = mService.deleteMemberFromDb(searchForMember());
 
-
-       if (status) {
+       if (status)
+       {
            memberAnchor.setVisible(false);
            contactAnchor.setVisible(false);
 
@@ -131,33 +128,55 @@ public class  MemberController {
 
 
     @FXML
-    private void showContactAnchor () {
+    private void showContactAnchor ()
+    {
 
-        if (newContactCheckBox.isSelected()) {
+        if (newContactCheckBox.isSelected())
+        {
             contactAnchor.setVisible(true);
             pickContact.setVisible(false);
-        } else {
+        } else
+            {
             contactAnchor.setVisible(false);
             pickContact.setVisible(true);
-        }
+            }
     }
 
 
     @FXML
-    private void addContact(ActionEvent event) throws Exception
+    private void addMemberAndContact(ActionEvent event) throws Exception
     {
             ContactService contactService = new ContactService();
             MemberService memberService = new MemberService();
 
-            if (newContactCheckBox.isSelected()) {
+            boolean checked = newContactCheckBox.isSelected();
+
+            if (checked)
+            {
                 contactAnchor.setVisible(true);
                 pickContact.setVisible(false);
                 contactService.addContactToDB(email.getText(), phoneNumber.getText());
 
             }
 
-            boolean memberAdded = memberService.addMemberToDB(firstname.getText() + " " + lastname.getText(),
-                    pickGroup.getSelectionModel().getSelectedItem().toString(), email.getText(), newContactCheckBox, pickContact);
+            boolean memberAdded;
+
+            try
+            {
+                memberAdded = memberService.addMemberToDB(
+                        firstname.getText() +
+                                " " +
+                                lastname.getText(),
+                                pickGroup.getSelectionModel().getSelectedItem().toString(),
+                                email.getText(),
+                                newContactCheckBox,
+                                pickContact);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                memberAdded = false;
+            }
 
             if (memberAdded)
             {

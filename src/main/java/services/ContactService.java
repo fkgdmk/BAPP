@@ -2,8 +2,6 @@ package services;
 
 import com.jfoenix.controls.JFXComboBox;
 import models.ContactPerson;
-import models.Group;
-
 import java.util.List;
 
 /**
@@ -12,12 +10,12 @@ import java.util.List;
 public class ContactService
 {
 
-    public boolean addContactToDB (String email, String phone) {
-
-
+    public boolean addContactToDB (String email, String phone)
+    {
         ContactPerson cp = new ContactPerson();
 
-        try {
+        try
+        {
             cp.set("email", email);
             cp.set("phone", phone);
             cp.saveIt();
@@ -31,17 +29,6 @@ public class ContactService
 
     }
 
-    public void setGroupPicker (JFXComboBox pickGroup)
-    {
-        List<Group> groups = Group.findAll();
-
-        for (Group g: groups)
-        {
-            pickGroup.getItems().add(g.get("name").toString());
-
-        }
-
-    }
 
     public void setContactPicker (JFXComboBox pickContact)
     {
