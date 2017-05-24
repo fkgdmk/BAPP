@@ -1,6 +1,7 @@
 package controllers.messages;
 
 import App.Main;
+import Notifications.Providers.SMS.NexmoProvider;
 import com.jfoenix.controls.*;
 import controllers.menu.MenuController;
 import javafx.event.ActionEvent;
@@ -58,6 +59,13 @@ public class MessageController
         messageService.setSentMessagesContainer(sentMessagesContainer);
         messageService.setTextField(subjectTextField);
         messageService.setErrorLabel(errorLabel);
+    }
+
+    public void sendNewMessage () throws Exception {
+
+        NexmoProvider n = new NexmoProvider();
+
+        n.sendSMS("+4530703294", "+4561307580", "Hva så");
     }
 
     @FXML

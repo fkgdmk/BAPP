@@ -36,17 +36,17 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </JFXTextArea>
-                        <JFXCheckBox fx:id="email_CheckBox" onAction="#handleCheckBoxes" layoutX="235.0" layoutY="85.0" text="EMAIL" unCheckedColor="#0f9b55">
+                        <JFXCheckBox fx:id="email_CheckBox" layoutX="235.0" layoutY="85.0" onAction="#handleCheckBoxes" text="EMAIL" unCheckedColor="#0f9b55">
                            <font>
                               <Font name="Roboto" size="12.0" />
                            </font>
                         </JFXCheckBox>
-                        <JFXCheckBox fx:id="text_CheckBox" onAction="#handleCheckBoxes" checkedColor="#0f9b55" layoutX="129.0" layoutY="84.0" text="SMS" unCheckedColor="#0f9b55">
+                        <JFXCheckBox fx:id="text_CheckBox" checkedColor="#0f9b55" layoutX="129.0" layoutY="84.0" onAction="#handleCheckBoxes" text="SMS" unCheckedColor="#0f9b55">
                            <font>
                               <Font name="Roboto" size="12.0" />
                            </font>
                         </JFXCheckBox>
-                        <JFXCheckBox fx:id="facebook_CheckBox" onAction="#handleCheckBoxes" layoutX="340.0" layoutY="85.0" text="FACEBOOK" unCheckedColor="#0f9b55">
+                        <JFXCheckBox fx:id="facebook_CheckBox" layoutX="340.0" layoutY="85.0" onAction="#handleCheckBoxes" text="FACEBOOK" unCheckedColor="#0f9b55">
                            <font>
                               <Font name="Roboto" size="12.0" />
                            </font>
@@ -76,16 +76,17 @@
                            </font>
                         </Label>
                 <JFXToggleButton fx:id="sendToGroup1Button" onAction="#handleCheckBoxes" layoutX="14.0" layoutY="101.0" prefHeight="61.0" prefWidth="149.0" style="-fx-background-color: #ffff;" text="Gruppe 1" unToggleLineColor="#9fccb7" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="80.0">
+
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXToggleButton>
-                        <JFXToggleButton fx:id="sendToGroup2Button" onAction="#handleCheckBoxes" layoutX="17.0" layoutY="185.0" prefHeight="60.0" prefWidth="143.0" style="-fx-background-color: #ffff;" text="Gruppe 2" unToggleLineColor="#9fccb7" AnchorPane.topAnchor="141.0">
+                        <JFXToggleButton fx:id="sendToGroup2Button" layoutX="17.0" layoutY="185.0" onAction="#handleCheckBoxes" prefHeight="60.0" prefWidth="143.0" style="-fx-background-color: #ffff;" text="Gruppe 2" unToggleLineColor="#9fccb7" AnchorPane.topAnchor="141.0">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
                         </JFXToggleButton>
-                        <JFXToggleButton fx:id="sendToGroup3Button" onAction="#handleCheckBoxes" layoutX="8.0" layoutY="275.0" prefHeight="60.0" prefWidth="160.0" style="-fx-background-color: #ffff;" text="Gruppe 3" unToggleLineColor="#9fccb7" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="200.0">
+                        <JFXToggleButton fx:id="sendToGroup3Button" layoutX="8.0" layoutY="275.0" onAction="#handleCheckBoxes" prefHeight="60.0" prefWidth="160.0" style="-fx-background-color: #ffff;" text="Gruppe 3" unToggleLineColor="#9fccb7" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="200.0">
                            <font>
                               <Font name="Roboto" size="16.0" />
                            </font>
