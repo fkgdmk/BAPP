@@ -13,6 +13,7 @@ public class GroupService
 {
 
     public void setListView(JFXListView<String> listView, String groupId) {
+
         List <Member> members = Member.where("group_id = " + groupId);
         for (Member member: members) {
             listView.getItems().add(member.get("name").toString());
