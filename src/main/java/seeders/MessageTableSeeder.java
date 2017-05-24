@@ -7,8 +7,7 @@ import models.Message;
  */
 public class MessageTableSeeder
 {
-    public void Seed(String message, String subject, boolean e, boolean t, boolean f,
-                     boolean g1, boolean g2, boolean g3)
+    public void Seed(String message, String subject, boolean e, boolean t, boolean f)
     {
         Message m = new Message();
         System.out.println(message);

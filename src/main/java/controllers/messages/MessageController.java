@@ -17,6 +17,8 @@ import models.Message;
 import services.MessageService;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jasonkelly on 18/05/2017.
@@ -117,7 +119,6 @@ public class MessageController
                 sendToGroup3 = sendToGroup3Button.isSelected();
                 break;
         }
-
     }
 
     @FXML
@@ -130,25 +131,23 @@ public class MessageController
     @FXML
     private void handleSendMessage(ActionEvent event) throws Exception
     {
+        List<Integer> groupIDs = new ArrayList<>();
+
         if (event.getSource() == sendMessage)
         {
-            int id;
+            int id = 0;
 
             if (sendToGroup1)
             {
-                id = 1;
+                groupIDs.add(1);
             }
-            else if (sendToGroup2)
+            if (sendToGroup2)
             {
-                id = 2;
+                groupIDs.add(2);
             }
-            else if (sendToGroup3)
+            if (sendToGroup3)
             {
-                id = 3;
-            }
-            else
-            {
-                id = 2;
+                groupIDs.add(3);
             }
 
             if (subjectTextField.getText().isEmpty() == false)
@@ -156,9 +155,8 @@ public class MessageController
                 if (sendEmail || sendText || sendFacebook)
                 {
 
-                    messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
-                            sendToGroup2, sendToGroup3);
-                    messageService.sendMessage(id, sendEmail, sendText);
+                    messageService.saveMessage(sendEmail, sendText, sendFacebook);
+                    messageService.sendMessage(id, sendEmail, sendText, groupIDs);
                 } else {
                     System.out.println("Please select media.");
                     errorLabel.setText("Vælg venligst et medie");

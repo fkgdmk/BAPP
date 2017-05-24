@@ -8,6 +8,7 @@ import models.Member;
 import org.javalite.activejdbc.Base;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,15 +18,16 @@ public class SendService extends Thread
 {
     private boolean sendEmail;
     private boolean sendText;
-    private int groupID;
     private String subject;
     private String message;
+    private List<Integer> groupIDs = new ArrayList<>();
 
     private boolean runThread;
 
-    public SendService (int _groupID, boolean _sendEmail, boolean _sendText, JFXTextField _subject, JFXTextArea _message)
+    public SendService (boolean _sendEmail, boolean _sendText,
+                        JFXTextField _subject, JFXTextArea _message, List<Integer> _groupIDs)
     {
-        groupID = _groupID;
+        groupIDs = _groupIDs;
         sendEmail = _sendEmail;
         sendText = _sendText;
 
@@ -43,28 +45,31 @@ public class SendService extends Thread
         }
     }
 
-    public void sendEmailsToGroup()
+    private void sendEmailsToGroup()
     {
-        List<Member> membersInGroup = Member.where("group_id =?", groupID);
+        int amountOfGroups = groupIDs.size();
+        List<Member> membersInGroup = new ArrayList<>();
 
-        //Find all the members in a group
-        for (int i = 0; i < membersInGroup.size(); i++)
+        for (int x = 0; x < amountOfGroups; x++)
         {
-            Member member = membersInGroup.get(i);
+            //Collect members in group(s).
+            membersInGroup.addAll(Member.where("group_id =?", groupIDs.get(x)));
 
             //Get their corresponding emails.
-            ContactPerson contactPerson = ContactPerson.findFirst("id =?", member.get("contact_person_id"));
-            String recipient = contactPerson.get("email").toString();
+            ContactPerson contactPerson = ContactPerson.findFirst("id =?",
+                    membersInGroup.get(x).get("contact_person_id"));
+            String recipientEmail = contactPerson.get("email").toString();
             String recipientSMS = contactPerson.get("phone").toString();
 
-            //Send email
+            //Create notification to send
             Notification notification = new Notification(
                     "test@example.com",
-                    recipient,
+                    recipientEmail,
                     subject,
                     message
             );
 
+            //Send email if requested
             if(sendEmail){
                 try {
                     notification.sendMail();
@@ -73,12 +78,9 @@ public class SendService extends Thread
                 }
             }
 
-            System.out.println("før sms test");
+            //Send text if requested
             if (sendText)
             {
-                System.out.println("sms test");
-                System.out.println("test");
-
                 Notification notifi = new Notification(
                         "+4530703294",
                         recipientSMS,
