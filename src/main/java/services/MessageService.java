@@ -136,35 +136,13 @@ public class MessageService
         container.getChildren().remove(index);
     }
 
-    public void sendMessage(int groupId)
+    public void sendMessage(int groupId, boolean mail, boolean text)
     {
-        List<Member> membersInGroup = Member.where("group_id =?", groupId);
+        //saveMessage(email_CheckBox,);
+        SendService emailThread = new SendService(groupId, mail, text, textField, textArea);
+        emailThread.setDaemon(true);
+        emailThread.start();
 
-        //Find all the members in a group
-        for (int i = 0; i < membersInGroup.size(); i++)
-        {
-            Member member = membersInGroup.get(i);
-
-            //Get their corresponding emails.
-            ContactPerson contactPerson = ContactPerson.findFirst("id =?", member.get("contact_person_id"));
-            String recipient = contactPerson.get("email").toString();
-
-            //Send email
-            Notification notification = new Notification(
-                    "test@example.com",
-                    recipient,
-                    textField.getText(),
-                    textArea.getText()
-            );
-
-            if(email_CheckBox){
-                try {
-                    notification.sendMail();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
 
         /* Testing (send til Lippert)
         Notification notification = new Notification(
