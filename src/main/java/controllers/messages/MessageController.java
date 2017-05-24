@@ -208,8 +208,17 @@ public class MessageController
                 id = 2;
             }
 
+<<<<<<< HEAD
             if (subjectTextField.getText().isEmpty() == false) {
                 if (sendEmail || sendText || sendFacebook) {
+=======
+            messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1, sendToGroup2, sendToGroup3);
+            messageService.sendMessage(id, sendEmail, sendText);
+            if (subjectTextField.getText().isEmpty() == false)
+            {
+                if (sendEmail || sendText || sendFacebook)
+                {                  
+>>>>>>> origin/master
                     messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
                             sendToGroup2, sendToGroup3);
                     messageService.sendMessage(id);

@@ -154,6 +154,7 @@ public class MessageService
         container.getChildren().remove(index);
     }
 
+<<<<<<< HEAD
     public void sendSMS (String text)  {
 
         NexmoProvider n = new NexmoProvider();
@@ -214,5 +215,13 @@ public class MessageService
                 notifi.sendSMS();
             }
         }
+=======
+    public void sendMessage(int groupId, boolean mail, boolean text)
+    {
+        //saveMessage(email_CheckBox,);
+        SendService emailThread = new SendService(groupId, mail, text, textField, textArea);
+        emailThread.setDaemon(true);
+        emailThread.start();
+>>>>>>> origin/master
     }
 }
