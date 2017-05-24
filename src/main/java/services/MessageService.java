@@ -11,10 +11,6 @@ import javafx.scene.layout.VBox;
 
 import models.*;
 import seeders.MessageTableSeeder;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 import models.Message;
 import models.User;
 
