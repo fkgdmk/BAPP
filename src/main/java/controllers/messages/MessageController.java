@@ -37,16 +37,17 @@ public class MessageController
     public JFXToggleButton sendToGroup2Button;
     public JFXToggleButton sendToGroup3Button;
 
+    public Label errorLabel;
+
+
     public boolean sendEmail = false;
     public boolean sendText = false;
     public boolean sendFacebook = false;
     public boolean sendToGroup1 = false;
     public boolean sendToGroup2 = false;
     public boolean sendToGroup3 = false;
-    public Label errorLabel;
 
     public static MessageService messageService;
-
 
 
     public void initialize()
@@ -203,13 +204,10 @@ public class MessageController
             if (subjectTextField.getText().isEmpty() == false)
             {
                 if (sendEmail || sendText || sendFacebook)
-                {
-                    //messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
-                            //sendToGroup2, sendToGroup3);
-
-
-
-
+                {                  
+                    messageService.saveMessage(sendEmail, sendText, sendFacebook, sendToGroup1,
+                        sendToGroup2, sendToGroup3);
+                    messageService.sendMessage();
                 }
 
                 else
@@ -218,13 +216,13 @@ public class MessageController
                     errorLabel.setText("Vælg venligst et medie");
                     errorLabel.setVisible(true);
                 }
-            }
 
             else
             {
                 System.out.println("Please insert subject");
                 errorLabel.setText("Indtast venligst et emne");
                 errorLabel.setVisible(true);
+                System.out.println("Please select media.");
             }
         }
     }

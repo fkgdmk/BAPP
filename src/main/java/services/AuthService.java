@@ -28,7 +28,7 @@ public class AuthService {
             return false;
         }
 
-        public boolean Logout(){
+        public static boolean Logout(){
             user = null;
             return true;
         }

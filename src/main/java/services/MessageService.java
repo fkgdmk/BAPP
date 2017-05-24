@@ -7,12 +7,16 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
 import models.*;
 import seeders.MemberTableSeeder;
 import seeders.MessageTableSeeder;
 
+import java.util.ArrayList
+import models.Message;
+import models.User;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,6 +61,22 @@ public class MessageService
     public void saveMessage(boolean email_CheckBox, boolean text_CheckBox, boolean facebook_CheckBox,
                             boolean sendToGroup1, boolean sendToGroup2, boolean sendToGroup3)
     {
+
+        Notification notification = new Notification(
+                "test@example.com",
+                "frederik.lippert@gmail.com",
+                textField.getText(),
+                textArea.getText()
+        );
+            if(email_CheckBox){
+            try {
+                notification.sendMail();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            }
+
+
         MessageTableSeeder messageTableSeeder = new MessageTableSeeder();
         messageTableSeeder.Seed(textArea.getText(), textField.getText(),
                 email_CheckBox, text_CheckBox, facebook_CheckBox, sendToGroup1, sendToGroup2, sendToGroup3);

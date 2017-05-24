@@ -20,7 +20,7 @@
                      <Image url="@/images/logo.png" />
                   </image>
                </ImageView>
-               <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="49.0" layoutY="105.0" prefHeight="17.0" prefWidth="102.0" text="Pia Eriksen" textAlignment="CENTER" textFill="#5d5d5d">
+               <Label fx:id="userName" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="49.0" layoutY="105.0" prefHeight="17.0" prefWidth="102.0" text="Pia Eriksen" textAlignment="CENTER" textFill="#5d5d5d">
                   <font>
                      <Font name="Roboto Black" size="18.0" />
                   </font>

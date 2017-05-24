@@ -138,7 +138,7 @@
                   </JFXButton>
                </children>
             </AnchorPane>
-            <JFXButton fx:id="searchButton" buttonType="RAISED" layoutX="808.0" layoutY="69.0" onAction="#searchForMember" prefHeight="32.0" prefWidth="79.0" ripplerFill="#000d08" style="-fx-background-color: #9fccb7;" text="SØG" textAlignment="CENTER" AnchorPane.rightAnchor="33.0">
+            <JFXButton fx:id="searchButton" buttonType="RAISED" defaultButton="true" layoutX="808.0" layoutY="69.0" onAction="#searchForMember" prefHeight="32.0" prefWidth="79.0" ripplerFill="#000d08" style="-fx-background-color: #9fccb7;" text="SØG" textAlignment="CENTER" AnchorPane.rightAnchor="33.0">
                <font>
                   <Font name="Roboto Bold" size="12.0" />
                </font></JFXButton>
