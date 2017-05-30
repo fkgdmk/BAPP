@@ -22,14 +22,11 @@ import java.util.List;
  */
 public class MessageService
 {
-    public JFXTextArea textArea; //message
-    public JFXTextField textField; //subject
-    public Label dateLabel;
-    public Label errorLabel;
-    public VBox container;
-    public boolean email_CheckBox;
-    public boolean text_CheckBox;
-    public boolean facebook_CheckBox;
+    private JFXTextArea textArea; //message
+    private JFXTextField textField; //subject
+    Label dateLabel;
+    Label errorLabel;
+    private VBox container;
 
     public void setTextArea(JFXTextArea _textArea) {
         textArea = _textArea;
@@ -64,10 +61,8 @@ public class MessageService
 
         //Count message entries in VBox
         int amountOfChildren = container.getChildren().size();
-        System.out.println("AOC: " + amountOfChildren);
         //Count messages in database
         int amountOfMessages = list.size();
-        System.out.println("AOM: " + amountOfMessages);
         //Calculate how many many message entries need to be generated
         int difference = amountOfMessages - amountOfChildren;
 
@@ -117,80 +112,7 @@ public class MessageService
         }
     }
 
-    public void deleteSentMessage(int index) {
-        //delete from database
-        List<Message> messages = Message.findAll();
-        Message messageToDelete = messages.get(index);
-        messageToDelete.delete();
-
-        //delete entry
-        container.getChildren().remove(index);
-    }
-
-    public void sendSMS(String text) {
-
-        NexmoProvider n = new NexmoProvider();
-
-        try {
-            n.sendSMS("+4530703294", "+4561307580", text);
-            System.out.println("SMS blev sendt");
-
-        } catch (Exception e) {
-            System.out.println("SMS blev ikke sendt");
-        }
-
-    }
-
-/**
-    public void sendMessage(int groupId) {
-
-
-        List<Member> membersInGroup = Member.where("group_id =?", groupId);
-
-        //Find all the members in a group
-        for (int i = 0; i < membersInGroup.size(); i++) {
-            Member member = membersInGroup.get(i);
-
-            //Get their corresponding emails.
-            ContactPerson contactPerson = ContactPerson.findFirst("id =?", member.get("contact_person_id"));
-            String recipientEmail = contactPerson.get("email").toString();
-            String recipientSMS = contactPerson.get("phone").toString();
-
-            System.out.println("email test");
-            if (email_CheckBox) {
-                Notification notification = new Notification(
-                        "test@example.com",
-                        recipientEmail,
-                        textField.getText(),
-                        textArea.getText()
-                );
-                try {
-
-                    notification.sendMail();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            System.out.println("sms test");
-            if (text_CheckBox) {
-
-                System.out.println("sms test");
-                System.out.println("test");
-
-                Notification notifi = new Notification(
-                        "+4530703294",
-                        recipientSMS,
-                        textField.getText(),
-                        textArea.getText()
-                );
-                notifi.sendSMS();
-            }
-        }
-    }
- **/
-
-    public void sendMessage(int groupId, boolean mail, boolean text, List<Integer> groupIDs)
+    public void sendMessage(boolean mail, boolean text, List<Integer> groupIDs)
     {
         //saveMessage(email_CheckBox,);
         SendService emailThread = new SendService(mail, text, textField, textArea, groupIDs);

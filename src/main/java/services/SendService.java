@@ -24,7 +24,7 @@ public class SendService extends Thread
 
     private boolean runThread;
 
-    public SendService (boolean _sendEmail, boolean _sendText,
+    SendService (boolean _sendEmail, boolean _sendText,
                         JFXTextField _subject, JFXTextArea _message, List<Integer> _groupIDs)
     {
         groupIDs = _groupIDs;
