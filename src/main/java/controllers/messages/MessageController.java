@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class MessageController
 {
-    @FXML
+    //FXML fields
     public JFXButton newMessage;
     public JFXButton messageHistory;
     public JFXButton messageTemplates;
@@ -40,23 +40,23 @@ public class MessageController
     public JFXToggleButton sendToGroup1Button;
     public JFXToggleButton sendToGroup2Button;
     public JFXToggleButton sendToGroup3Button;
-
     public Label errorLabel;
 
+    //Message selection booleans
+    private boolean sendEmail = false;
+    private boolean sendText = false;
+    private boolean sendFacebook = false;
+    private boolean sendToGroup1 = false;
+    private boolean sendToGroup2 = false;
+    private boolean sendToGroup3 = false;
 
-    public boolean sendEmail = false;
-    public boolean sendText = false;
-    public boolean sendFacebook = false;
-    public boolean sendToGroup1 = false;
-    public boolean sendToGroup2 = false;
-    public boolean sendToGroup3 = false;
-
-    public static MessageService messageService;
-
+    private static MessageService messageService;
 
     public void initialize()
     {
+        //Create a new MessageService to handle most of the logic
         messageService = new MessageService();
+        //Pass often-used fields for easier use
         messageService.setTextArea(messageTextArea);
         messageService.setDateLabel(date);
         messageService.setSentMessagesContainer(sentMessagesContainer);
@@ -64,40 +64,33 @@ public class MessageController
         messageService.setErrorLabel(errorLabel);
     }
 
-    public void sendNewMessage () throws Exception {
-
-        NexmoProvider n = new NexmoProvider();
-
-        n.sendSMS("+4530703294", "+4561307580", "Hva så");
-    }
-
     @FXML
     private void handleSentMessages()
     {
-        getMessageContainer();
-        Timestamp timeStamp;
-        long count = Message.count();
-        System.out.println("Count: " + count);
-        Message message = Message.findFirst("created_at");
-        if (message != null)
+        //If there are messages in the database, we want to show them.
+        if (Message.count() != null)
         {
-            timeStamp = (Timestamp) message.get("created_at");
-            System.out.println("TS: " + timeStamp);
-            //messageService.changeDateLabel(timeStamp);
+            //Tell message service to show the sent messages in the DB.
             messageService.showSentMessages();
         }
+        //If there are no messages, we do nothing.
         else
         {
-            System.out.println("Something went wrong with handling Sent Messages");
+            System.out.println("There are no messages to show.");
         }
     }
 
     @FXML
     private void handleCheckBoxes(ActionEvent event)
     {
+        //We get the check-button that was pressed.
+        //We cast to ButtonBase, because we use two different check-boxes,
+        //including JFXToggleButton and JFXCheckBox, which both derive from
+        //ButtonBase.
         ButtonBase button = (ButtonBase) event.getSource();
-        System.out.println("Source: " + button.getId().toString());
 
+        //We determine which button has been pressed, by comparing the ID
+        //of the button that has been pressed in a switch-statement.
         switch (button.getId())
         {
             case "email_CheckBox":
@@ -122,54 +115,60 @@ public class MessageController
     }
 
     @FXML
-    private void getMessageContainer()
-    {
-        VBox container = messageService.container;
-        System.out.println(container.getChildren().size());
-    }
-
-    @FXML
     private void handleSendMessage(ActionEvent event) throws Exception
     {
+        //Create a list to store potentially more group IDs.
         List<Integer> groupIDs = new ArrayList<>();
 
+        //Check if the button user pressed is "Send"
         if (event.getSource() == sendMessage)
         {
-            int id = 0;
-
-            if (sendToGroup1)
+            //Make sure there are at least one group selected.
+            if (sendToGroup1 || sendToGroup2 || sendToGroup3)
             {
-                groupIDs.add(1);
-            }
-            if (sendToGroup2)
-            {
-                groupIDs.add(2);
-            }
-            if (sendToGroup3)
-            {
-                groupIDs.add(3);
-            }
-
-            if (subjectTextField.getText().isEmpty() == false)
-            {
-                if (sendEmail || sendText || sendFacebook)
+                //Then add the groups selected to the list og group IDs.
+                if (sendToGroup1)
                 {
+                    groupIDs.add(1);
+                }
+                if (sendToGroup2)
+                {
+                    groupIDs.add(2);
+                }
+                if (sendToGroup3)
+                {
+                    groupIDs.add(3);
+                }
 
-                    messageService.saveMessage(sendEmail, sendText, sendFacebook);
-                    messageService.sendMessage(id, sendEmail, sendText, groupIDs);
-                } else {
-                    System.out.println("Please select media.");
-                    errorLabel.setText("Vælg venligst et medie");
+                //Make sure the subject field is filled.
+                if (!subjectTextField.getText().isEmpty())
+                {
+                    //Make sure a media is chosen.
+                    if (sendEmail || sendText || sendFacebook)
+                    {
+                        //If all of the above is true, we are allowed to send a message.
+
+                        //We store the message in the DB.
+                        messageService.saveMessage(sendEmail, sendText, sendFacebook);
+                        //We send the required variables to the message-service.
+                        messageService.sendMessage(sendEmail, sendText, groupIDs);
+                    }
+                    else
+                    {
+                        errorLabel.setText("Vælg venligst et medie");
+                        errorLabel.setVisible(true);
+                    }
+                }
+                else
+                {
+                    errorLabel.setText("Indtast venligst et emne");
                     errorLabel.setVisible(true);
                 }
             }
-
             else
             {
-                System.out.println("Please insert subject");
-                errorLabel.setText("Indtast venligst et emne");
+                errorLabel.setText("Vælg venligst mindst en gruppe");
                 errorLabel.setVisible(true);
-                System.out.println("Please select media.");
             }
         }
     }
@@ -198,7 +197,5 @@ public class MessageController
             AnchorPane view = loader.load();
             rootLayout.setCenter(view);
         }
-
     }
-
 }
