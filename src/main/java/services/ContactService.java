@@ -10,6 +10,10 @@ import java.util.List;
 public class ContactService
 {
 
+
+    /**
+     *Tilføjer kontakt til databasen med parametrene email og telefonnr.
+     */
     public boolean addContactToDB (String email, String phone)
     {
         ContactPerson cp = new ContactPerson();
@@ -20,7 +24,6 @@ public class ContactService
             cp.set("phone", phone);
             cp.saveIt();
 
-            System.out.println("Contact oprettet");
             return true;
 
         } catch (Exception e) {
@@ -30,6 +33,11 @@ public class ContactService
     }
 
 
+
+    /**
+     *Tager først alle kontaktpersonernes navne fra databasen og tilføjer dem til en liste. Derefter tilføjes listen
+     * til en comboBox.
+     */
     public void setContactPicker (JFXComboBox pickContact)
     {
         List <ContactPerson> contactEmails = ContactPerson.findAll();

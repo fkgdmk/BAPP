@@ -9,6 +9,10 @@ public class ContactTableSeeder
 {
 
 
+    /**
+     *Tilføjer John Manuel til email kollennen og 1234567 til phone kollonnen i contact_persons tabellen.
+     * Det samme sker i de andre seeders klasser, bare til andre tabeller i databasen.
+     */
     public void Seed () {
 
         ContactPerson cp = new ContactPerson();

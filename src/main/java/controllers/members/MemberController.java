@@ -50,7 +50,9 @@ public class  MemberController
     public JFXCheckBox newContactCheckBox;
     public JFXButton cancelNewInfo;
 
-
+    /**
+     *
+     */
     public void initialize ()
     {
 
@@ -67,6 +69,11 @@ public class  MemberController
         }
     }
 
+    /**
+     * Bruger metoden searchForNameInDb fra MemberService, og tager navnet fra textfeltet
+     * som input. Hvis navnet bliver fundet, sætter den værdierne til de forskellige elementer.
+     *
+     */
     @FXML
     private Object searchForMember () throws Exception
     {
@@ -101,6 +108,10 @@ public class  MemberController
 
     }
 
+    /**
+     * Bruger metoden searchForNameInDB fra MemberService og bruger derefter metoden deleteFromDB til at slette
+     * det medlem der er blevet søgt efter.
+     */
     @FXML
     private void deleteMember () throws Exception
     {
@@ -118,15 +129,10 @@ public class  MemberController
        }
     }
 
-    @FXML
-    private void editMember () throws Exception
-    {
-        MemberService mService = new MemberService();
 
-        mService.editMemberNameInDB(searchForMember().toString(), newName.getText());
-    }
-
-
+    /**
+     * Viser to AnchorPanes med de forskellige informationer på medlemmet
+     */
     @FXML
     private void showContactAnchor ()
     {
@@ -143,6 +149,10 @@ public class  MemberController
     }
 
 
+    /**
+     * Bruger metoden addContactToDb fra ContactService til at tilføje den indtastede email og telefonnr.
+     * Derefter bruges metoden addMember fra MemberService til at tilføje navn og gruppe fra de inputs.
+     */
     @FXML
     private void addMemberAndContact(ActionEvent event) throws Exception
     {
@@ -197,7 +207,9 @@ public class  MemberController
     }
 
 
-
+    /**
+     * Håndterer navigationsbarene i toppen og annuler knappen under editMember.
+     */
 
     @FXML
     private void handleTabNavigation(ActionEvent event) throws Exception

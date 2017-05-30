@@ -38,6 +38,10 @@ public class MemberService
     }
 
 
+    /**
+     * Tilføjer informationerne til databasen ved hjælp af et Active Record statements og metoder, som kan læses om i rapporten.
+     *
+     */
     public boolean addMember(String name, String groupName, String contactEmail, JFXCheckBox checkBox, JFXComboBox box)
     {
 
@@ -75,6 +79,10 @@ public class MemberService
             }
     }
 
+    /**
+     *Søger efter medlem i databasen ved brug af findFirst. Derefter bruger vi et array til at dele det fulde navn
+     * op i to dele, fornavn og efternavn.
+     */
     public boolean searchForNameInDB (String searchInput)
     {
 
@@ -104,21 +112,10 @@ public class MemberService
         }
     }
 
-    public boolean editMemberNameInDB (String oldName, String newName)
-    {
 
-        try
-        {
-            Member member = Member.findFirst("name = ?", oldName);
-            member.set("name", newName).saveIt();
-            System.out.println("Navn ændret");
-
-            return true;
-        } catch (Exception e)
-        {
-            return false;
-        }
-    }
+    /**
+     *Søger først efter medlem med findFirst, og sletter derefter medlemmet fra databasen.
+     */
 
     public boolean deleteMemberFromDb (Object member)
     {
@@ -138,6 +135,9 @@ public class MemberService
 
 
 
+    /**
+     *Først tilføjes grupperne fra databasen til en liste, og derefter tilføjes listen til en ComboBox.
+     */
     public void setGroupPicker (JFXComboBox pickGroup)
     {
         List<Group> groups = Group.findAll();
