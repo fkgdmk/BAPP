@@ -12,14 +12,11 @@ import javafx.scene.layout.BorderPane;
 import services.GroupService;
 
 /**
- * Created by jasonkelly on 18/05/2017.
+ * Created by Fredrik Lippert on 18/05/2017.
  */
 public class GroupController {
 
 
-    public JFXButton newMessage;
-    public JFXButton messageHistory;
-    public JFXButton messageTemplates;
     public JFXListView listVIew;
     public JFXButton group1;
     public JFXButton group2;

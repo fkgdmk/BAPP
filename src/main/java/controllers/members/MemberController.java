@@ -16,7 +16,7 @@ import services.ContactService;
 import services.MemberService;
 
 /**
- * Created by jasonkelly on 18/05/2017.
+ * Created by Fredrik Mikkelsen on 18/05/2017.
  */
 public class  MemberController
 {
@@ -163,7 +163,7 @@ public class  MemberController
 
             try
             {
-                memberAdded = memberService.addMemberToDB(
+                memberAdded = memberService.addMember(
                         firstname.getText() +
                                 " " +
                                 lastname.getText(),
@@ -172,10 +172,11 @@ public class  MemberController
                                 newContactCheckBox,
                                 pickContact);
             }
-            catch (Exception e)
+            catch (NullPointerException e)
             {
                 e.printStackTrace();
                 memberAdded = false;
+                statusLabel.setVisible(true);
             }
 
             if (memberAdded)

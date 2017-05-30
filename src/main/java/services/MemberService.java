@@ -9,7 +9,7 @@ import java.util.List;
 
 
 /**
- * Created by Fredrik on 19-05-2017.
+ * Created by Fredrik Mikkelsen on 19-05-2017.
  */
 
 public class MemberService
@@ -38,7 +38,7 @@ public class MemberService
     }
 
 
-    public boolean addMemberToDB (String name, String groupName, String contactEmail, JFXCheckBox checkBox, JFXComboBox box)
+    public boolean addMember(String name, String groupName, String contactEmail, JFXCheckBox checkBox, JFXComboBox box)
     {
 
         Member m = new Member();

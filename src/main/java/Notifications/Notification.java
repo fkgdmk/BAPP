@@ -6,6 +6,10 @@ import Notifications.Providers.SMS.NexmoProvider;
 
 import java.io.IOException;
 
+/**
+ * Created by jasonkelly & Fredrik Mikkelsen on 19/05/2017.
+ */
+
 
 public class Notification {
 
@@ -58,5 +62,6 @@ public class Notification {
                 return new SendgridProvider(getProperties.getProperty("sendgrid_api_key")).SendEmail(from, to, subject, body);
         }
     }
+
 
 }

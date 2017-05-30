@@ -2,6 +2,9 @@ package seeders;
 import models.User;
 import org.mindrot.jbcrypt.BCrypt;
 
+/**
+ * Created by jasonkelly on 23/05/2017.
+ */
 
 public class UserTableSeeder {
 

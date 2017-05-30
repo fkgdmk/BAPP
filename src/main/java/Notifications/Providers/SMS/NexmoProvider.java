@@ -5,17 +5,14 @@ import com.nexmo.client.auth.AuthMethod;
 import com.nexmo.client.auth.TokenAuthMethod;
 import com.nexmo.client.sms.SmsSubmissionResult;
 import com.nexmo.client.sms.messages.TextMessage;
+import org.omg.PortableInterceptor.ServerRequestInfo;
 
 /**
- * Created by Fredrik on 24-05-2017.
+ * Created by Fredrik Mikkelsen on 24-05-2017.
  */
+
 public class NexmoProvider implements SMSInterface
 {
-    private String nexmoApiKey;
-
-    public NexmoProvider(String nexmoApiKey) {
-        this.nexmoApiKey = nexmoApiKey;
-    }
 
     public NexmoProvider () {}
 

@@ -5,7 +5,7 @@ import models.ContactPerson;
 import java.util.List;
 
 /**
- * Created by Fredrik on 22-05-2017.
+ * Created by Fredrik Mikkelsen on 22-05-2017.
  */
 public class ContactService
 {

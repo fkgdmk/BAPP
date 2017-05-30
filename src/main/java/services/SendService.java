@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Jakob on 24-05-2017.
+ * Created by Jakob Larsen on 24-05-2017.
  */
 public class SendService extends Thread
 {

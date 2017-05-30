@@ -1,7 +1,7 @@
 package Notifications.Providers;
 
 /**
- * Created by Fredrik on 24-05-2017.
+ * Created by Fredrik Mikkelsen on 24-05-2017.
  */
 public interface SMSInterface
 {
