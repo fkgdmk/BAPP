@@ -6,6 +6,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<!--
+    Fredrik Mikkelsen
+    -->
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.members.MemberController">
    <children>
       <Label layoutX="25.0" layoutY="21.0" prefHeight="32.0" prefWidth="235.0" style="-fx-text-fill: #00aa55;" text="Rediger medlem">

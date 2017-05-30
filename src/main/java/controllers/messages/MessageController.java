@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jasonkelly on 18/05/2017.
+ * Created by Jakob Larsen on 18/05/2017.
  */
 public class MessageController
 {

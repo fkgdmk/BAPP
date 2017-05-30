@@ -19,7 +19,9 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 
-
+/**
+ * Created by jasonkelly on 23/05/2017.
+ */
 public class LoginController {
 
     public JFXButton submit;

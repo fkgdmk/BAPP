@@ -5,19 +5,22 @@ import com.nexmo.client.auth.AuthMethod;
 import com.nexmo.client.auth.TokenAuthMethod;
 import com.nexmo.client.sms.SmsSubmissionResult;
 import com.nexmo.client.sms.messages.TextMessage;
+import org.omg.PortableInterceptor.ServerRequestInfo;
 
 /**
- * Created by Fredrik on 24-05-2017.
+ * Created by Fredrik Mikkelsen on 24-05-2017.
  */
+
 public class NexmoProvider implements SMSInterface
 {
+
+    public NexmoProvider () {}
 
 
     public boolean sendSMS(String fromPhoneNumber, String toPhoneNumber, String text) throws Exception {
 
         AuthMethod auth = new TokenAuthMethod("28701646", "c0228d31f419b355");
         NexmoClient client = new NexmoClient(auth);
-
 
         TextMessage message = new TextMessage(fromPhoneNumber, toPhoneNumber, text);
 

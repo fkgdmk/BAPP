@@ -4,6 +4,10 @@ import models.User;
 import org.javalite.activejdbc.Model;
 import org.mindrot.jbcrypt.BCrypt;
 
+/**
+ * Created by jasonkelly on 23/05/2017.
+ */
+
 public class AuthService {
 
         private static Model user;

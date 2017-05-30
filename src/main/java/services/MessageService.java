@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Jakob on 20-05-2017.
+ * Created by Jakob Larsen on 20-05-2017.
  */
 public class MessageService
 {

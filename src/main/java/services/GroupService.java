@@ -7,7 +7,7 @@ import models.Member;
 import java.util.List;
 
 /**
- * Created by frede on 19-05-2017.
+ * Created by Frederik Lippert on 19-05-2017.
  */
 public class GroupService
 {

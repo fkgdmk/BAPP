@@ -2,17 +2,14 @@ package services;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import models.ContactPerson;
 import models.Group;
 import models.Member;
-
 import java.util.List;
-import java.util.Objects;
 
 
 /**
- * Created by Fredrik on 19-05-2017.
+ * Created by Fredrik Mikkelsen on 19-05-2017.
  */
 
 public class MemberService
@@ -41,7 +38,7 @@ public class MemberService
     }
 
 
-    public boolean addMemberToDB (String name, String groupName, String contactEmail, JFXCheckBox checkBox, JFXComboBox box)
+    public boolean addMember(String name, String groupName, String contactEmail, JFXCheckBox checkBox, JFXComboBox box)
     {
 
         Member m = new Member();
@@ -49,10 +46,8 @@ public class MemberService
             try
             {
                 m.set("name", name);
-                System.out.println("test2");
                 Group group = Group.findFirst("name = ?", groupName);
                 m.set("group_id", group.get("id"));
-                System.out.println("test3");
 
                 boolean checked = checkBox.isSelected();
 
@@ -60,21 +55,16 @@ public class MemberService
 
                 if (checked)
                 {
-                    System.out.println("checkbox test");
-                cp = ContactPerson.findFirst("email = ?", contactEmail);
-                m.set("contact_person_id", cp.get("id"));
-
-                } else
+                    cp = ContactPerson.findFirst("email = ?", contactEmail);
+                }
+                else
                 {
                     cp = ContactPerson.findFirst("email = ?", box.getSelectionModel().getSelectedItem().toString());
-                    m.set("contact_person_id", cp.get("id"));
                 }
 
-
-                System.out.println("test4");
-
+                m.set("contact_person_id", cp.get("id"));
                 m.saveIt();
-                System.out.println("Medlem oprettet");
+
                 return true;
 
             }
@@ -83,22 +73,6 @@ public class MemberService
                 System.out.println(e.getCause());
                 return false;
             }
-    }
-
-    public boolean getExistingContactID (String email) {
-
-        try {
-
-            ContactPerson contactPerson = ContactPerson.findFirst("email = ?", email);
-            Member member = new Member();
-            member.set("contact_person_id", contactPerson.get("id"));
-
-            return true;
-
-        } catch (Exception e) {
-            return false;
-        }
-
     }
 
     public boolean searchForNameInDB (String searchInput)
@@ -124,7 +98,8 @@ public class MemberService
             return true;
 
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
             return false;
         }
     }
@@ -132,27 +107,26 @@ public class MemberService
     public boolean editMemberNameInDB (String oldName, String newName)
     {
 
-        try {
+        try
+        {
             Member member = Member.findFirst("name = ?", oldName);
             member.set("name", newName).saveIt();
             System.out.println("Navn ændret");
 
             return true;
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             return false;
         }
-
     }
 
     public boolean deleteMemberFromDb (Object member)
     {
-
         try
         {
         Member m = Member.findFirst("name = ? ", member);
         m.delete();
         return true;
-
         }
         catch (Exception e)
         {
