@@ -51,6 +51,7 @@ public class MessageService
     public void saveMessage(boolean email_CheckBox, boolean text_CheckBox, boolean facebook_CheckBox)
     {
         MessageTableSeeder messageTableSeeder = new MessageTableSeeder();
+
         messageTableSeeder.Seed(textArea.getText(), textField.getText(),
                 email_CheckBox, text_CheckBox, facebook_CheckBox);
     }

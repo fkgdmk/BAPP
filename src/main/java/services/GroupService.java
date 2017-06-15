@@ -19,4 +19,5 @@ public class GroupService
             listView.getItems().add(member.get("name").toString());
         }
     }
+
 }

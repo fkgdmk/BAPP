@@ -8,4 +8,4 @@ import java.util.List;
 public class ContactPerson extends Model
 {
     public ContactPerson() {}
-}
+}                   

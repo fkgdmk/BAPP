@@ -16,13 +16,12 @@ public class NexmoProvider implements SMSInterface
 
     public NexmoProvider () {}
 
-
     public boolean sendSMS(String fromPhoneNumber, String toPhoneNumber, String text) throws Exception {
 
         AuthMethod auth = new TokenAuthMethod("28701646", "c0228d31f419b355");
         NexmoClient client = new NexmoClient(auth);
 
-        TextMessage message = new TextMessage(fromPhoneNumber, toPhoneNumber, text);
+        TextMessage message = new TextMessage("30703294", toPhoneNumber, text);
 
             SmsSubmissionResult[] responses = client.getSmsClient().submitMessage(message);
 
@@ -32,6 +31,7 @@ public class NexmoProvider implements SMSInterface
             }
             return true;
         }
+
 
 }
 
