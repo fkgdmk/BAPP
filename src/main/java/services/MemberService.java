@@ -119,6 +119,7 @@ public class MemberService
 
     public boolean deleteMemberFromDb (Object member)
     {
+
         try
         {
         Member m = Member.findFirst("name = ? ", member);
@@ -131,7 +132,6 @@ public class MemberService
         }
 
     }
-
 
 
 

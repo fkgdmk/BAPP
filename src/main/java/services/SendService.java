@@ -48,6 +48,7 @@ public class SendService extends Thread
     private void sendEmailsToGroup()
     {
         int amountOfGroups = groupIDs.size();
+
         List<Member> membersInGroup = new ArrayList<>();
 
         //Collect members in group(s).

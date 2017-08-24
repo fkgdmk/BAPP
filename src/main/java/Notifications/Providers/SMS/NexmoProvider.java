@@ -18,7 +18,7 @@ public class NexmoProvider implements SMSInterface
 
     public boolean sendSMS(String fromPhoneNumber, String toPhoneNumber, String text) throws Exception {
 
-        AuthMethod auth = new TokenAuthMethod("28701646", "c0228d31f419b355");
+        AuthMethod auth = new TokenAuthMethod("28721246", "c0222d31f439b355");
         NexmoClient client = new NexmoClient(auth);
 
         TextMessage message = new TextMessage("30703294", toPhoneNumber, text);
